@@ -4,10 +4,21 @@ class saltstack::params {
   {
     'redhat':
     {
+      $package_provider='rpm'
+
       case $::operatingsystemrelease
       {
-        /^[5-7].*$/:
+        /^5.*$/:
         {
+          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm"
+        }
+        /^6.*$/:
+        {
+          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm"
+        }
+        /^7.*$/:
+        {
+          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm"
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -22,6 +33,7 @@ class saltstack::params {
           {
             /^14.*$/:
             {
+              fail('currently unsupported - fuck off')
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
           }

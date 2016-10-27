@@ -1,4 +1,5 @@
 class saltstack::minion (
+                          $master                = 'saltmaster',
                           $manage_package        = true,
                           $package_ensure        = 'installed',
                           $manage_service        = true,

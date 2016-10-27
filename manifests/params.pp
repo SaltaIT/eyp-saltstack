@@ -1,5 +1,7 @@
 class saltstack::params {
 
+  $minion_package_name='salt-minion'
+
   case $::osfamily
   {
     'redhat':

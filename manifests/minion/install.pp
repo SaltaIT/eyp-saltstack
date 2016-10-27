@@ -1,6 +1,6 @@
 class saltstack::minion::install inherits saltstack::minion {
 
-  if($saltstack::manage_package)
+  if($saltstack::minion::manage_package)
   {
     include ::saltstack::repo
 

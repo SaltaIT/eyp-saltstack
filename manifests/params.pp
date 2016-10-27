@@ -5,6 +5,7 @@ class saltstack::params {
     'redhat':
     {
       $package_provider='rpm'
+      $saltstack_repo_name='salt-repo'
 
       case $::operatingsystemrelease
       {

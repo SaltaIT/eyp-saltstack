@@ -10,12 +10,12 @@ class saltstack::service inherits saltstack {
   $is_docker_container_var=getvar('::eyp_docker_iscontainer')
   $is_docker_container=str2bool($is_docker_container_var)
 
-  if( $is_docker_container==false or
-      $saltstack::manage_docker_service)
-  {
-    if($saltstack::manage_service)
-    {
-      #service or exec here
-    }
-  }
+  # if( $is_docker_container==false or
+  #     $saltstack::manage_docker_service)
+  # {
+  #   if($saltstack::manage_service)
+  #   {
+  #     #service or exec here
+  #   }
+  # }
 }

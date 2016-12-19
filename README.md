@@ -42,7 +42,7 @@ management, etc.) this is the time to mention it.
 
 ### Setup Requirements
 
-This module requires pluginsync enabled 
+This module requires pluginsync enabled
 
 ### Beginning with saltstack
 
@@ -75,7 +75,7 @@ have some test to check both presence and absence of any feature
 
 ### TODO
 
-TODO list
+* Ubuntu support: https://repo.saltstack.com/#ubuntu
 
 ### Contributing
 

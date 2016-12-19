@@ -4,6 +4,9 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
 
+  #TODO:
+  # ubuntu: https://repo.saltstack.com/#ubuntu
+
   exec { 'which wget eyp-saltstack':
     command => 'which wget',
     unless  => 'which wget',

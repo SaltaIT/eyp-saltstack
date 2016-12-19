@@ -13,7 +13,7 @@ class saltstack::minion::config inherits saltstack::minion {
     ensure  => 'present',
     owner   => 'root',
     group   => 'root',
-    mode    => '0640',
+    mode    => '0644',
     content => $salt::minion::minion_id,
   }
 

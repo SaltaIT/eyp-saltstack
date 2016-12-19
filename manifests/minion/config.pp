@@ -8,4 +8,13 @@ class saltstack::minion::config inherits saltstack::minion {
     mode    => '0640',
     content => "master: ${saltstack::minion::master}\n",
   }
+
+  file { '/etc/salt/minion_id':
+    ensure  => 'present',
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0640',
+    content => $salt::minion::minion_id,
+  }
+
 }

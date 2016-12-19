@@ -1,8 +1,8 @@
 {
   "name": "eyp-saltstack",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "author": "eyp",
-  "summary": null,
+  "summary": "salt minion basic setup",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-saltstack",
   "project_page": null,

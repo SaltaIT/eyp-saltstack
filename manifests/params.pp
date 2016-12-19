@@ -14,15 +14,15 @@ class saltstack::params {
       {
         /^5.*$/:
         {
-          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm"
+          $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm'
         }
         /^6.*$/:
         {
-          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm"
+          $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el6.noarch.rpm'
         }
         /^7.*$/:
         {
-          $saltstack_repo_url="https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm"
+          $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el7.noarch.rpm'
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }

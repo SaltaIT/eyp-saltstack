@@ -8,5 +8,9 @@ class saltstack::minion::install inherits saltstack::minion {
       ensure => $saltstack::package_ensure,
     }
   }
+  else
+  {
+     notice('minion not installed using puppet')
+  }
 
 }

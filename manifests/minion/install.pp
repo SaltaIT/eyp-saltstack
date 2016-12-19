@@ -10,7 +10,7 @@ class saltstack::minion::install inherits saltstack::minion {
   }
   else
   {
-     notice('saltstack::minion not installed using puppet')
+    notice('saltstack::minion not installed using puppet')
   }
 
 }

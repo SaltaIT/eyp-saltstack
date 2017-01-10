@@ -3,6 +3,8 @@ class saltstack::params {
   $minion_package_name='salt-minion'
   $minion_service_name='salt-minion'
 
+  $master_package_name='salt-master'
+
   case $::osfamily
   {
     'redhat':

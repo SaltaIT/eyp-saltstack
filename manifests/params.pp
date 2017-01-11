@@ -4,6 +4,7 @@ class saltstack::params {
   $minion_service_name='salt-minion'
 
   $master_package_name='salt-master'
+  $master_service_name='salt-master'
 
   case $::osfamily
   {

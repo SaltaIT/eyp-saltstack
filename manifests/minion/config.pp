@@ -6,7 +6,7 @@ class saltstack::minion::config inherits saltstack::minion {
     owner   => 'root',
     group   => 'root',
     mode    => '0640',
-    content => "master: ${saltstack::minion::master}\n",
+    content => template("${module_name}/minion/minion.erb"),
   }
 
   file { '/etc/salt/minion_id':

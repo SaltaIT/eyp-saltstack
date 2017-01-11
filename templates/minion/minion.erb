@@ -1,0 +1,12 @@
+<%- if scope.lookupvar('saltstack::minion::master').kind_of?(Array) -%>
+master:
+  <%- scope.lookupvar('saltstack::minion::master').each do |val| -%>
+  - <%= val %>
+  <%- end -%>
+master_type: <%= scope.lookupvar('saltstack::minion::master_type') %>
+master_failback: <%= scope.lookupvar('saltstack::minion::master_failback') %>
+random_master: <%= scope.lookupvar('saltstack::minion::random_master') %>
+<%- else -%>
+master: <%= scope.lookupvar('saltstack::minion::master') %>
+<%- end -%>
+master_port: <%= scope.lookupvar('saltstack::minion::master_port') %>

@@ -1,5 +1,9 @@
 class saltstack::minion (
                           $master                = 'saltmaster',
+                          $master_type           = 'failover',
+                          $master_failback       = false,
+                          $random_master         = false,
+                          $master_port           = '4506',
                           $manage_package        = true,
                           $package_ensure        = 'installed',
                           $manage_service        = true,
@@ -8,6 +12,8 @@ class saltstack::minion (
                           $service_enable        = true,
                           $minion_id             = $::fqdn,
                         ) inherits saltstack::params{
+
+  #master_type Can be str, failover, func or disable.
 
   class { '::saltstack::minion::install': } ->
   class { '::saltstack::minion::config': } ~>

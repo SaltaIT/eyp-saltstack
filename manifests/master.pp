@@ -1,5 +1,9 @@
 class saltstack::master (
-                          $master                = 'saltmaster',
+                          $interface             = '0.0.0.0',
+                          $ipv6                  = false,
+                          $publish_port          = '4505',
+                          $user                  = 'root',
+                          $ret_port              = '4506',
                           $manage_package        = true,
                           $package_ensure        = 'installed',
                           $manage_service        = true,

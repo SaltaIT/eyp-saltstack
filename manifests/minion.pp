@@ -13,7 +13,7 @@ class saltstack::minion (
                           $minion_id             = $::fqdn,
                         ) inherits saltstack::params{
 
-  #master_type Can be str, failover, func or disable.
+  # master_type Can be str, failover, func or disable.
 
   class { '::saltstack::minion::install': } ->
   class { '::saltstack::minion::config': } ~>

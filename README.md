@@ -54,8 +54,19 @@ for upgrading, you may wish to include an additional section here: Upgrading
 
 ## Usage
 
-Put the classes, types, and resources for customizing, configuring, and doing
-the fancy stuff with your module here.
+salt minion:
+
+```puppet
+class { 'saltstack::minion':
+  master => 'salt-master.systemadmin.es'
+}
+```
+
+salt master:
+
+```puppet
+class { 'saltstack::master': }
+```
 
 ## Reference
 

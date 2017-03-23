@@ -44,7 +44,7 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
       apt::source { 'saltstack':
         location => $saltstack::params::saltstack_repo_url,
         release  => $::lsbdistcodename,
-        repos    => "${::lsbdistcodename}/main",
+        repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
       }
     }

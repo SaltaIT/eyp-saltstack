@@ -47,6 +47,8 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
       }
+
+      Exec['eyp-apt apt-get update'] -> Class[saltstack::repo]
     }
     default:
     {

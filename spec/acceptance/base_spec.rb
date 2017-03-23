@@ -10,6 +10,12 @@ describe 'saltstack class' do
 
       class { 'saltstack': }
 
+      class { 'saltstack::minion':
+        master => '127.0.0.1'
+      }
+
+      class { 'saltstack::master': }
+
       EOF
 
       # Run it twice and test for idempotency

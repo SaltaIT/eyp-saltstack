@@ -1,6 +1,6 @@
 {
   "name": "eyp-saltstack",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "eyp",
   "summary": "salt minion basic setup",
   "license": "Apache-2.0",

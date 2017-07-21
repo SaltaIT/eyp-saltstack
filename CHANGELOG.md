@@ -1,5 +1,8 @@
 # CHANGELOG
 
+## 0.1.3
+
+* dropped CentOS 5 support
 
 ## 0.1.2
 

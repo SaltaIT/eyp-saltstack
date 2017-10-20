@@ -12,7 +12,7 @@
   * **master_failback**
   * **random_master**
 * added **master_port** variable
-* added Ubuntu 14.04 and Ubuntu16.04 support
+* added Ubuntu 14.04 and Ubuntu 16.04 support
 
 ## 0.1.1
 

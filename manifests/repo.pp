@@ -20,8 +20,8 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
         creates => $srcdir,
       }
 
-      exec { 'wget saltstack repo':
-        command => "wget ${saltstack::params::saltstack_repo_url} -O ${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
+      download { 'wget saltstack repo':
+        url => $saltstack::params::saltstack_repo_url,
         creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
         require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
       }
@@ -53,7 +53,4 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
       fail('unsupported')
     }
   }
-
-
-
 }

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.4
+
+* repo is downloaded using the download type from **eyplib 0.1.10**
+
 ## 0.1.3
 
 * dropped CentOS 5 support

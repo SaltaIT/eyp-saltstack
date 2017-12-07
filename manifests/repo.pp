@@ -21,7 +21,7 @@ class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
       }
 
       download { 'wget saltstack repo':
-        url => $saltstack::params::saltstack_repo_url,
+        url     => $saltstack::params::saltstack_repo_url,
         creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
         require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
       }

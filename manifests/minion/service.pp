@@ -15,7 +15,7 @@ class saltstack::minion::service inherits saltstack::minion {
     if($saltstack::minion::manage_service)
     {
       service { $saltstack::params::minion_service_name:
-        ensure => $saltstack::minion::service_enable,
+        ensure => $saltstack::minion::service_ensure,
         enable => $saltstack::minion::service_enable,
       }
     }

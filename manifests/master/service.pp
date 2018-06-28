@@ -15,7 +15,7 @@ class saltstack::master::service inherits saltstack::master {
     if($saltstack::master::manage_service)
     {
       service { $saltstack::params::master_service_name:
-        ensure => $saltstack::master::service_enable,
+        ensure => $saltstack::master::service_ensure,
         enable => $saltstack::master::service_enable,
       }
     }

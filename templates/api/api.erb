@@ -50,7 +50,7 @@ rest_cherrypy:
   # timeout.
   expire_responses: <%= scope.function_bool2truefalse([@expire_responses]) %>
   # Maximum size for the HTTP request body.
-  <%- if defined?(@max_request_body_size -%>
+  <%- if defined?(@max_request_body_size) -%>
   max_request_body_size: <%= @max_request_body_size %>
   <%- end -%>
   # Collect and report statistics about the CherryPy server. Reports are available

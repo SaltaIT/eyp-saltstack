@@ -1,4 +1,4 @@
-class saltstak::api::config inherits saltstak::api {
+class saltstack::api::config inherits saltstack::api {
 
   file { '/etc/salt/master.d/salt-api.conf':
     ensure  => 'present',

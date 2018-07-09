@@ -1,0 +1,87 @@
+# puppet managed file
+rest_cherrypy:
+  # The port for the webserver to listen on. Required.
+  port: <%= @port %>
+  # The socket interface for the HTTP server to listen on.
+  <%- if defined?(@host) -%>
+  host: <%= @host %>
+  <%- else -%>
+  #host: 0.0.0.0
+  <%- end -%>
+  # Starts the web server in development mode. It will reload itself when the
+  # underlying code is changed and will output more debugging info.
+  #debug: False
+  debug: <%= scope.function_bool2truefalse([@debug]) %>
+  # The path to a SSL certificate. (See below)
+  #ssl_crt: ''
+  <%- if defined?(@ssl_crt) -%>
+  ssl_crt: <%= @ssl_crt %>
+  <%- end -%>
+  # The path to the private key for your SSL certificate. (See below)
+  #ssl_key: ''
+  <%- if defined?(@ssl_key) -%>
+  ssl_key: <%= @ssl_key %>
+  <%- end -%>
+  # A flag to disable SSL. Warning: your Salt authentication credentials will be
+  # sent in the clear!
+  #disable_ssl: ''
+  <%- if defined?(@disable_ssl) -%>
+  disable_ssl: <%= @disable_ssl %>
+  <%- end -%>
+  # The Webhook URL requires authentication by default but external services
+  # cannot always be configured to send authentication. See the Webhook
+  # documentation for suggestions on securing this interface.
+  webhook_disable_auth: <%= scope.function_bool2truefalse([@webhook_disable_auth]) %>
+  <%- if @webhook_disable_auth -%>
+  # Configure the URL endpoint for the Webhook entry point.
+    <%- if defined?(@webhook_url) -%>
+  webhook_url: <%= @webhook_url %>
+    <%- end -%>
+  <%- end -%>
+  # The number of worker threads to start up in the pool.
+  <%- if defined?(@thread_pool) -%>
+  thread_pool: <%= @thread_pool %>
+  <%- end -%>
+  # Specify the maximum number of HTTP connections to queue.
+  <%- if defined?(@socket_queue_size) -%>
+  socket_queue_size: <%= @socket_queue_size %>
+  <%- end -%>
+  # Whether to check for and kill HTTP responses that have exceeded the default
+  # timeout.
+  expire_responses: <%= scope.function_bool2truefalse([@expire_responses]) %>
+  # Maximum size for the HTTP request body.
+  <%- if defined?(@max_request_body_size -%>
+  max_request_body_size: <%= @max_request_body_size %>
+  <%- end -%>
+  # Collect and report statistics about the CherryPy server. Reports are available
+  # via the Stats URL.
+  collect_stats: <%= scope.function_bool2truefalse([@collect_stats]) %>
+  # A filesystem path to static HTML/JavaScript/CSS/image assets.
+  #static: ''
+  <%- if defined?(@static) -%>
+  static: <%= @static %>
+  <%- end -%>
+  # The URL prefix to use when serving static assets out of the directory
+  # specified in the static setting.
+  <%- if defined?(@static_path) -%>
+  static_path: <%= @static_path %>
+  <%- end -%>
+  # A filesystem path to an HTML file that will be served as a static file. This
+  # is useful for bootstrapping a single-page JavaScript app.
+  #app: ''
+  <%- if defined?(@app) -%>
+  app: <%= @app %>
+  <%- end -%>
+  # The URL prefix to use for serving the HTML file specified in the app setting.
+  # This should be a simple name containing no slashes. Any path information after
+  # the specified path is ignored; this is useful for apps that utilize the HTML5
+  # history API.
+  #app_path: /app
+  <%- if defined?(@app_path) -%>
+  app_path: <%= @app_path %>
+  <%- end -%>
+  # A URL path to the main entry point for the application. This is useful for
+  # serving multiple applications from the same URL.
+  <%- if defined?(@root_prefix -%>
+  root_prefix: <%= @root_prefix %>
+  <%- end -%>

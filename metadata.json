@@ -2,7 +2,7 @@
   "name": "eyp-saltstack",
   "version": "0.1.4",
   "author": "eyp",
-  "summary": "salt minion basic setup",
+  "summary": "saltstack - minion, master, api, cloud and ssh setup and configuration",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-saltstack",
   "project_page": "https://github.com/NTTCom-MS/eyp-saltstack",
@@ -35,7 +35,7 @@
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04" ]
+      "operatingsystemrelease": [ "14.04", "16.04", "18.04" ]
     }
   ],
   "requirements": [

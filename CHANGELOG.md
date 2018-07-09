@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.1.5
+
+* added Ubuntu 18.04 support
+* added suport for:
+  - saltstack::ssh
+  - saltstack::api
+  - saltstack::cloud
+
 ## 0.1.4
 
 * repo is downloaded using the download type from **eyplib 0.1.10**

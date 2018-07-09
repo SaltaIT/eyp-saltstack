@@ -4,6 +4,7 @@ class saltstack::minion::install inherits saltstack::minion {
   {
     include ::saltstack::repo
 
+    Class['::saltstack::repo'] ->
     package { $saltstack::params::minion_package_name:
       ensure => $saltstack::minion::package_ensure,
     }

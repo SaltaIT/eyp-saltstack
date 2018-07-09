@@ -1,4 +1,4 @@
-class saltstack::api::install inherits salt::api {
+class saltstack::api::install inherits saltstak::api {
 
     if($saltstack::api::manage_package)
     {

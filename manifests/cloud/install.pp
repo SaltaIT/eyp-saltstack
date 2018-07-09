@@ -1,4 +1,4 @@
-class saltstack::cloud::install inherits salt::cloud {
+class saltstack::cloud::install inherits saltstak::cloud {
 
     if($saltstack::cloud::manage_package)
     {

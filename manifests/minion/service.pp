@@ -1,5 +1,4 @@
 class saltstack::minion::service inherits saltstack::minion {
-  #
   validate_bool($saltstack::minion::manage_docker_service)
   validate_bool($saltstack::minion::manage_service)
   validate_bool($saltstack::minion::service_enable)

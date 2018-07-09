@@ -1,6 +1,5 @@
-#
 class saltstack::master::config inherits saltstack::master {
-  
+
   concat { '/etc/salt/master':
     ensure  => 'present',
     owner   => 'root',

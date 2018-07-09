@@ -65,4 +65,4 @@ log_granular_levels: {}
 
 # Whether or not to remove the accompanying SSH key from the known_hosts file
 # when an instance is destroyed.
-delete_sshkeys: <%= scope.function_bool2truefalse([@delete_sshkeys]) %>
+delete_sshkeys: <%= @delete_sshkeys %>

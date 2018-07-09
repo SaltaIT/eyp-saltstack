@@ -11,7 +11,7 @@ rest_cherrypy:
   # Starts the web server in development mode. It will reload itself when the
   # underlying code is changed and will output more debugging info.
   #debug: False
-  debug: <%= scope.function_bool2truefalse([@debug]) %>
+  debug: <%= @debug %>
   # The path to a SSL certificate. (See below)
   #ssl_crt: ''
   <%- if defined?(@ssl_crt) -%>
@@ -31,7 +31,7 @@ rest_cherrypy:
   # The Webhook URL requires authentication by default but external services
   # cannot always be configured to send authentication. See the Webhook
   # documentation for suggestions on securing this interface.
-  webhook_disable_auth: <%= scope.function_bool2truefalse([@webhook_disable_auth]) %>
+  webhook_disable_auth: <%= @webhook_disable_auth %>
   <%- if @webhook_disable_auth -%>
   # Configure the URL endpoint for the Webhook entry point.
     <%- if defined?(@webhook_url) -%>
@@ -48,14 +48,14 @@ rest_cherrypy:
   <%- end -%>
   # Whether to check for and kill HTTP responses that have exceeded the default
   # timeout.
-  expire_responses: <%= scope.function_bool2truefalse([@expire_responses]) %>
+  expire_responses: <%= @expire_responses %>
   # Maximum size for the HTTP request body.
   <%- if defined?(@max_request_body_size) -%>
   max_request_body_size: <%= @max_request_body_size %>
   <%- end -%>
   # Collect and report statistics about the CherryPy server. Reports are available
   # via the Stats URL.
-  collect_stats: <%= scope.function_bool2truefalse([@collect_stats]) %>
+  collect_stats: <%= @collect_stats %>
   # A filesystem path to static HTML/JavaScript/CSS/image assets.
   #static: ''
   <%- if defined?(@static) -%>

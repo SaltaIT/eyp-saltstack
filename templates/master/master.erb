@@ -17,3 +17,11 @@ user: <%= scope.lookupvar('saltstack::master::user') %>
 # The port used by the communication interface. The ret (return) port is the
 # interface used for the file server, authentication, job returns, etc.
 ret_port: <%= scope.lookupvar('saltstack::master::ret_port') %>
+
+# Set the number of hours to keep old job information in the job cache:
+keep_jobs: <%= @keep_jobs %>
+
+# Passing very large events can cause the minion to consume large amounts of
+# memory. This value tunes the maximum size of a message allowed onto the
+# master event bus. The value is expressed in bytes.
+max_event_size: <%= @max_event_size %>

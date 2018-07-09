@@ -86,8 +86,6 @@ have some test to check both presence and absence of any feature
 
 ### TODO
 
-* Ubuntu support: https://repo.saltstack.com/#ubuntu
-
 ### Contributing
 
 1. Fork it

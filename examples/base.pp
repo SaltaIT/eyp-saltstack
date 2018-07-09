@@ -2,11 +2,11 @@ class { 'saltstack::minion': }
 
 class { 'saltstack::master': }
 
-saltstack::master::pillar { 'base':
-  files => [ '/srv/salt-data/pillar' ],
+saltstack::master::fileroot { 'base':
+  files => [ '/srv/salt-data/base' ],
 }
 
-saltstack::master::fileroot { 'base':
+saltstack::master::pillar { 'base':
   files => [ '/srv/salt-data/pillar' ],
 }
 

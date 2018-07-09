@@ -1,3 +1,5 @@
+# puppet managed file
+
 <%- if scope.lookupvar('saltstack::minion::master').kind_of?(Array) -%>
 master:
   <%- scope.lookupvar('saltstack::minion::master').each do |val| -%>

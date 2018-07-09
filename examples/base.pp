@@ -12,6 +12,4 @@ saltstack::master::fileroot { 'base':
 
 class { 'saltstack::cloud': }
 
-class { 'saltstack::api':
-        api_ssl_crt => "/etc/pki/tls/certs/localhost.crt",
-        api_ssl_key => "/etc/pki/tls/certs/localhost.key", }
+class { 'saltstack::api': }

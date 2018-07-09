@@ -1,4 +1,4 @@
-class saltstack::cloud::config inherits saltstak::cloud {
+class saltstack::cloud::config inherits saltstack::cloud {
 
   file { '/etc/salt/cloud':
     ensure  => 'present',

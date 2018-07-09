@@ -1,4 +1,4 @@
-class saltstack::ssh::install inherits saltstak::ssh {
+class saltstack::ssh::install inherits saltstack::ssh {
 
     if($saltstack::ssh::manage_package)
     {

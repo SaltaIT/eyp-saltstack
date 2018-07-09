@@ -1,10 +1,10 @@
 class saltstack::master::config inherits saltstack::master {
 
   concat { '/etc/salt/master':
-    ensure  => 'present',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0640',
+    ensure => 'present',
+    owner  => 'root',
+    group  => 'root',
+    mode   => '0640',
   }
 
   concat::fragment{ 'salt master base config':

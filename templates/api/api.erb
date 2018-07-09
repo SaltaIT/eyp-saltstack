@@ -82,6 +82,6 @@ rest_cherrypy:
   <%- end -%>
   # A URL path to the main entry point for the application. This is useful for
   # serving multiple applications from the same URL.
-  <%- if defined?(@root_prefix -%>
+  <%- if defined?(@root_prefix) -%>
   root_prefix: <%= @root_prefix %>
   <%- end -%>

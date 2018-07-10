@@ -12,20 +12,15 @@ rest_cherrypy:
   # underlying code is changed and will output more debugging info.
   #debug: False
   debug: <%= @debug %>
-  # The path to a SSL certificate. (See below)
-  #ssl_crt: ''
-  <%- if defined?(@ssl_crt) -%>
-  ssl_crt: <%= @ssl_crt %>
+  <%- if @generate_selfsigned_cert -%>
+  # The path to a SSL certificate
+  ssl_crt: /etc/pki/tls/certs/localhost.crt
+  # The path to the private key for your SSL certificate
+  ssl_key: /etc/pki/tls/certs/localhost.key
   <%- end -%>
-  # The path to the private key for your SSL certificate. (See below)
-  #ssl_key: ''
-  <%- if defined?(@ssl_key) -%>
-  ssl_key: <%= @ssl_key %>
-  <%- end -%>
+  <%- if defined?(@disable_ssl) -%>
   # A flag to disable SSL. Warning: your Salt authentication credentials will be
   # sent in the clear!
-  #disable_ssl: ''
-  <%- if defined?(@disable_ssl) -%>
   disable_ssl: <%= @disable_ssl %>
   <%- end -%>
   # The Webhook URL requires authentication by default but external services

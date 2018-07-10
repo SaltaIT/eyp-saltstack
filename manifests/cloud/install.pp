@@ -10,4 +10,14 @@ class saltstack::cloud::install inherits saltstack::cloud {
       }
     }
 
+    if($saltstack::cloud::install_impacket)
+    {
+      
+    }
+
+    if($saltstack::cloud::install_winrm)
+    {
+
+    }
+
 }

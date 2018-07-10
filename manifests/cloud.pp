@@ -10,6 +10,8 @@ class saltstack::cloud(
                         $log_fmt_logfile       = undef,
                         $log_granular_levels   = undef,
                         $delete_sshkeys        = false,
+                        $install_impacket      = true,
+                        $install_winrm         = true,
                       ) inherits saltstack::params {
 
   include ::saltstack::master

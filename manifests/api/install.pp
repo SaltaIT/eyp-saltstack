@@ -3,6 +3,7 @@ class saltstack::api::install inherits saltstack::api {
   case $saltstack::api::package_ensure
   {
     'installed': { $pip_ensure='present' }
+    'present': { $pip_ensure='present' }
     default: { $pip_ensure='absent' }
   }
 

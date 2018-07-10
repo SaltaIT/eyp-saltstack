@@ -30,7 +30,7 @@ class saltstack::api::install inherits saltstack::api {
 
       exec { 'update setuptools':
         command => 'pip install --upgrade pip setuptools',
-        onlyif  => 'pip list 2>&1 | grep upgrade',
+        onlyif  => 'bash -c \'pip list 2>&1 | grep upgrade\'',
         path    => '/usr/sbin:/usr/bin:/sbin:/bin',
       }
 

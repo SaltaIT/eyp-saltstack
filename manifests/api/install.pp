@@ -1,29 +1,34 @@
 class saltstack::api::install inherits saltstack::api {
 
-    if($saltstack::api::manage_package)
+  case $saltstack::api::package_ensure
+  {
+    'installed': { $pip_ensure='present' }
+    default: { $pip_ensure='absent' }
+  }
+
+  if($saltstack::api::manage_package)
+  {
+    include ::saltstack::repo
+
+    Class['::saltstack::repo'] ->
+    package { $saltstack::params::api_package_name:
+      ensure => $saltstack::api::package_ensure,
+    }
+
+    if($saltstack::params::api_dependencies!=undef)
     {
-      include ::saltstack::repo
-
-      Class['::saltstack::repo'] ->
-      package { $saltstack::params::api_package_name:
+      package { $saltstack::params::api_dependencies:
         ensure => $saltstack::api::package_ensure,
-      }
-
-      if($saltstack::params::api_dependencies!=undef)
-      {
-        package { $saltstack::params::api_dependencies:
-          ensure => $saltstack::api::package_ensure,
-          before => Package[$saltstack::params::api_package_name],
-        }
-      }
-
-      if($saltstack::params::api_pip_dependencies!=undef)
-      {
-        pythonpip { $saltstack::params::api_pip_dependencies:
-          ensure => $saltstack::api::package_ensure,
-          before => Package[$saltstack::params::api_package_name],
-        }
+        before => Package[$saltstack::params::api_package_name],
       }
     }
 
+    if($saltstack::params::api_pip_dependencies!=undef)
+    {
+      pythonpip { $saltstack::params::api_pip_dependencies:
+        ensure => $pip_ensure,
+        before => Package[$saltstack::params::api_package_name],
+      }
+    }
+  }
 }

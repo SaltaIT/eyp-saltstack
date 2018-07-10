@@ -16,6 +16,14 @@ class saltstack::api::install inherits saltstack::api {
           before => Package[$saltstack::params::api_package_name],
         }
       }
+
+      if($saltstack::params::api_pip_dependencies!=undef)
+      {
+        pythonpip { $saltstack::params::api_pip_dependencies:
+          ensure => $saltstack::api::package_ensure,
+          before => Package[$saltstack::params::api_package_name],
+        }
+      }
     }
 
 }

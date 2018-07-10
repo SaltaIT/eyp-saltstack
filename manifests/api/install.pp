@@ -27,7 +27,7 @@ class saltstack::api::install inherits saltstack::api {
     if($saltstack::params::api_pip_dependencies!=undef)
     {
       include ::python
-      
+
       pythonpip { $saltstack::params::api_pip_dependencies:
         ensure => $pip_ensure,
         before => Package[$saltstack::params::api_package_name],

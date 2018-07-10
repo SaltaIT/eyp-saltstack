@@ -1,6 +1,6 @@
 class saltstack::api::config inherits saltstack::api {
 
-  if($saltstack::generate_selfsigned_cert)
+  if($saltstack::api::generate_selfsigned_cert)
   {
     exec { 'selfsigned cert API':
       command => 'salt-call --local tls.create_self_signed_cert',

@@ -30,6 +30,8 @@ class saltstack::params {
           $api_pip_dependencies='pyOpenSSL'
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el6.noarch.rpm'
+
+          $windows_dependencies=undef
         }
         /^7.*$/:
         {
@@ -37,6 +39,8 @@ class saltstack::params {
           $api_pip_dependencies=undef
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm'
+
+          $windows_dependencies=[ 'python2-impacket', 'python2-winrm' ]
         }
         default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
       }
@@ -45,6 +49,8 @@ class saltstack::params {
     {
       $api_dependencies=undef
       $api_pip_dependencies=undef
+      $windows_dependencies=[ 'python-impacket', 'python-winrm' ]
+
       case $::operatingsystem
       {
         'Ubuntu':

@@ -8,6 +8,14 @@ class saltstack::api::install inherits saltstack::api {
       package { $saltstack::params::api_package_name:
         ensure => $saltstack::api::package_ensure,
       }
+
+      if($saltstack::params::api_dependencies!=undef)
+      {
+        package { $saltstack::params::api_dependencies:
+          ensure => $saltstack::api::package_ensure,
+          before => Package['$saltstack::params::api_package_name'],
+        }
+      }
     }
 
 }

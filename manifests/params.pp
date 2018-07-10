@@ -21,6 +21,7 @@ class saltstack::params {
       $package_provider='rpm'
       $saltstack_repo_name='salt-repo'
       $saltstack_repo_url_key=undef
+      $api_dependencies=['pyOpenSSL']
 
       case $::operatingsystemrelease
       {
@@ -39,6 +40,7 @@ class saltstack::params {
     }
     'Debian':
     {
+      $api_dependencies=undef
       case $::operatingsystem
       {
         'Ubuntu':

@@ -83,5 +83,40 @@ describe 'saltstack class' do
       it { is_expected.to be_running }
     end
 
+    describe package('salt-api') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('salt-api') do
+      it { should be_enabled }
+      it { is_expected.to be_running }
+    end
+
+    describe package('salt-cloud') do
+      it { is_expected.to be_installed }
+    end
+
+    describe package('salt-ssh') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('salt-master') do
+      it { should be_enabled }
+      it { is_expected.to be_running }
+    end
+
+    describe package('salt-master') do
+      it { is_expected.to be_installed }
+    end
+
+    describe package('salt-minion') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('salt-minion') do
+      it { should be_enabled }
+      it { is_expected.to be_running }
+    end
+
   end
 end

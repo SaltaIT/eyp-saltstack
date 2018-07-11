@@ -2,7 +2,7 @@
   "name": "eyp-saltstack",
   "version": "0.1.5",
   "author": "eyp",
-  "summary": "saltstack - minion, master, api, cloud and ssh setup and configuration",
+  "summary": "saltstack - minion, master, api, cloud, syndic and ssh setup and configuration",
   "license": "Apache-2.0",
   "source": "https://github.com/NTTCom-MS/eyp-saltstack",
   "project_page": "https://github.com/NTTCom-MS/eyp-saltstack",

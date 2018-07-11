@@ -12,17 +12,6 @@ describe 'saltstack class' do
         master => '127.0.0.1'
       }
 
-      class { 'saltstack::master': }
-
-      saltstack::master::fileroot { 'base':
-        files => [ '/srv/salt-data/base' ],
-      }
-
-      saltstack::master::pillar { 'base':
-        files => [ '/srv/salt-data/pillar' ],
-      }
-
-
       EOF
 
       # Run it twice and test for idempotency
@@ -30,24 +19,19 @@ describe 'saltstack class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
-    describe file('/etc/salt/master') do
-      it { should be_file }
-      its(:content) { should match 'puppet managed file' }
-      its(:content) { should match 'hash_type: sha256' }
-      its(:content) { should match 'file_roots:' }
-      its(:content) { should match '- /srv/salt-data/base' }
-      its(:content) { should match 'pillar_roots:' }
-      its(:content) { should match '- /srv/salt-data/pillar' }
-      its(:content) { should match 'interface: 0.0.0.0' }
-      its(:content) { should match 'publish_port: 4505' }
-      its(:content) { should match 'keep_jobs: 170' }
-      its(:content) { should match 'max_event_size: 10485760' }
-    end
-
     describe file('/etc/salt/minion') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
       its(:content) { should match 'hash_type: sha256' }
+    end
+
+    describe package('salt-minion') do
+      it { is_expected.to be_installed }
+    end
+
+    describe service('salt-minion') do
+      it { should be_enabled }
+      it { is_expected.to be_running }
     end
 
   end

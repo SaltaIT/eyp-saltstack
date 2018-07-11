@@ -51,10 +51,8 @@ describe 'saltstack class' do
     describe file('/etc/salt/cloud') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
-      its(:content) { should match 'port: 8000' }
-      its(:content) { should match 'expire_responses: false' }
-      its(:content) { should match 'ssl_crt: /etc/pki/tls/certs/localhost.crt' }
-      its(:content) { should match 'ssl_key: /etc/pki/tls/certs/localhost.key' }
+      its(:content) { should match 'keysize: 2048' }
+      its(:content) { should match 'delete_sshkeys: false' }
     end
 
     describe file('/etc/salt/master.d/salt-api.conf') do
@@ -64,6 +62,8 @@ describe 'saltstack class' do
       its(:content) { should match 'port: 8000' }
       its(:content) { should match 'max_request_body_size: 1048576' }
       its(:content) { should match 'expire_responses: false' }
+      its(:content) { should match 'ssl_crt: /etc/pki/tls/certs/localhost.crt' }
+      its(:content) { should match 'ssl_key: /etc/pki/tls/certs/localhost.key' }
     end
 
     describe file('/etc/salt/minion') do

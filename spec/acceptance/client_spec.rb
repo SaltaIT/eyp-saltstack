@@ -29,10 +29,5 @@ describe 'saltstack class' do
       it { is_expected.to be_installed }
     end
 
-    describe service('salt-minion') do
-      it { should be_enabled }
-      it { is_expected.to be_running }
-    end
-
   end
 end

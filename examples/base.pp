@@ -1,4 +1,6 @@
-class { 'saltstack::minion': }
+class { 'saltstack::minion':
+  master => '127.0.0.1'
+}
 
 class { 'saltstack::master': }
 
@@ -13,3 +15,5 @@ saltstack::master::pillar { 'base':
 class { 'saltstack::cloud': }
 
 class { 'saltstack::api': }
+
+class { 'saltstack::syndic': }

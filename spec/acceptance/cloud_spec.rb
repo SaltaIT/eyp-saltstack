@@ -22,6 +22,10 @@ describe 'saltstack class' do
         files => [ '/srv/salt-data/pillar' ],
       }
 
+      class { 'saltstack::cloud': }
+
+      class { 'saltstack::api': }
+
 
       EOF
 
@@ -31,6 +35,16 @@ describe 'saltstack class' do
     end
 
     describe file('/etc/salt/master') do
+      it { should be_file }
+      its(:content) { should match 'puppet managed file' }
+    end
+
+    describe file('/etc/salt/cloud') do
+      it { should be_file }
+      its(:content) { should match 'puppet managed file' }
+    end
+
+    describe file('/etc/salt/master.d/salt-api.conf') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
     end

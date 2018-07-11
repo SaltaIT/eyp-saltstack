@@ -17,9 +17,7 @@
 
 ## Overview
 
-A one-maybe-two sentence summary of what the module does/what problem it solves.
-This is your 30 second elevator pitch for your module. Consider including
-OS/Puppet version it works with.
+saltstack configuration management
 
 ## Module Description
 
@@ -35,22 +33,40 @@ management, etc.) this is the time to mention it.
 
 ### What saltstack affects
 
-* A list of files, packages, services, or operations that the module will alter,
-  impact, or execute on the system it's installed on.
-* This is a great place to stick any warnings.
-* Can be in list or paragraph form.
+* Installs saltstack repo
+* Installs saltstack packages and dependencies
+* Manages configuration files
+* Manages services
 
 ### Setup Requirements
 
-This module requires pluginsync enabled
+This module requires pluginsync enabled for puppet <=3.8
 
 ### Beginning with saltstack
 
-The very basic steps needed for a user to get the module up and running.
+```puppet
+class { 'saltstack::minion':
+  master => '127.0.0.1'
+}
 
-If your most recent release breaks compatibility or requires particular steps
-for upgrading, you may wish to include an additional section here: Upgrading
-(For an example, see http://forge.puppetlabs.com/puppetlabs/firewall).
+class { 'saltstack::master': }
+
+saltstack::master::fileroot { 'base':
+  files => [ '/srv/salt-data/base' ],
+}
+
+saltstack::master::pillar { 'base':
+  files => [ '/srv/salt-data/pillar' ],
+}
+
+class { 'saltstack::ssh': }
+
+class { 'saltstack::cloud': }
+
+class { 'saltstack::api': }
+
+class { 'saltstack::syndic': }
+```
 
 ## Usage
 
@@ -70,14 +86,23 @@ class { 'saltstack::master': }
 
 ## Reference
 
-Here, list the classes, types, providers, facts, etc contained in your module.
-This section should include all of the under-the-hood workings of your module so
-people know what the module is touching on their system but don't need to mess
-with things. (We are working on automating this section!)
+TODO
 
 ## Limitations
 
-This is where you list OS compatibility, version compatibility, etc.
+### salt-minion
+
+* RedHat 6 and derivatives
+* RedHat 7 and derivatives
+* Ubuntu 14.04
+* Ubuntu 16.04
+* Ubuntu 18.04
+
+### server components
+
+* RedHat 7 and derivatives
+* Ubuntu 16.04
+* Ubuntu 18.04
 
 ## Development
 

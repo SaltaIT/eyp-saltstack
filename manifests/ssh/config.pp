@@ -5,7 +5,7 @@ class saltstack::ssh::config inherits saltstack::ssh {
     owner   => 'root',
     group   => 'root',
     mode    => '0664',
-    content => template("${module_name}/ssh.erb"),
+    content => template("${module_name}/ssh/ssh.erb"),
   }
 
   file { '/etc/salt/roster':
@@ -13,6 +13,6 @@ class saltstack::ssh::config inherits saltstack::ssh {
     owner   => 'root',
     group   => 'root',
     mode    => '0664',
-    content => template("${module_name}/roster.erb"),
+    content => template("${module_name}/ssh/roster.erb"),
   }
 }

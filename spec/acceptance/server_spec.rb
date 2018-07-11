@@ -38,6 +38,16 @@ describe 'saltstack class' do
       expect(apply_manifest(pp).exit_code).to eq(0)
     end
 
+    describe file('/etc/salt/master.d/salt-ssh.conf') do
+      it { should be_file }
+      its(:content) { should match 'puppet managed file' }
+    end
+
+    describe file('/etc/salt/roster') do
+      it { should be_file }
+      its(:content) { should match 'puppet managed file' }
+    end
+
     describe file('/etc/salt/master') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }

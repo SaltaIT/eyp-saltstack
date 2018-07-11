@@ -15,6 +15,37 @@ class saltstack::cloud(
 
   include ::saltstack::master
 
+  case $::osfamily
+  {
+    'redhat':
+    {
+      case $::operatingsystemrelease
+      {
+        /^6.*$/: { fail("cloud is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+        /^7.*$/: { }
+        default: { }
+      }
+    }
+    'Debian':
+    {
+      case $::operatingsystem
+      {
+        'Ubuntu':
+        {
+          case $::operatingsystemrelease
+          {
+            /^14.*$/: { fail("cloud is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+            /^16.*$/: { }
+            /^18.*$/: { }
+            default: { }
+          }
+        }
+        default: { }
+      }
+    }
+    default: { }
+  }
+
   Class['::saltstack::master'] ->
   class { '::saltstack::cloud::install': } ->
   class { '::saltstack::cloud::config': } ->

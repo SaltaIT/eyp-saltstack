@@ -13,8 +13,6 @@ class saltstack::cloud(
                         $install_windows_dependencies = true,
                       ) inherits saltstack::params {
 
-  include ::saltstack::master
-
   case $::osfamily
   {
     'redhat':
@@ -45,6 +43,8 @@ class saltstack::cloud(
     }
     default: { }
   }
+
+  include ::saltstack::master
 
   Class['::saltstack::master'] ->
   class { '::saltstack::cloud::install': } ->

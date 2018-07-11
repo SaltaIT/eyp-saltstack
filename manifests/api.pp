@@ -26,6 +26,37 @@ class saltstack::api(
                       $generate_selfsigned_cert = true,
                     ) inherits saltstack::params {
 
+  case $::osfamily
+  {
+    'redhat':
+    {
+      case $::operatingsystemrelease
+      {
+        /^6.*$/: { fail("api is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+        /^7.*$/: { }
+        default: { }
+      }
+    }
+    'Debian':
+    {
+      case $::operatingsystem
+      {
+        'Ubuntu':
+        {
+          case $::operatingsystemrelease
+          {
+            /^14.*$/: { fail("api is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+            /^16.*$/: { }
+            /^18.*$/: { }
+            default: { }
+          }
+        }
+        default: { }
+      }
+    }
+    default: { }
+  }
+
   include ::saltstack::master
 
   Class['::saltstack::master'] ->

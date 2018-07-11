@@ -23,22 +23,5 @@ class saltstack::api::install inherits saltstack::api {
         before => Package[$saltstack::params::api_package_name],
       }
     }
-
-    if($saltstack::params::api_pip_dependencies!=undef)
-    {
-      include ::python
-
-      exec { 'update setuptools':
-        command => 'pip install --upgrade setuptools',
-        onlyif  => 'bash -c \'pip list 2>&1 | grep upgrade\'',
-        path    => '/usr/sbin:/usr/bin:/sbin:/bin',
-      }
-
-      pythonpip { $saltstack::params::api_pip_dependencies:
-        ensure  => $pip_ensure,
-        before  => Package[$saltstack::params::api_package_name],
-        require => Exec['update setuptools'],
-      }
-    }
   }
 }

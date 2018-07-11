@@ -27,7 +27,6 @@ class saltstack::params {
         /^6.*$/:
         {
           $api_dependencies=undef
-          $api_pip_dependencies='pyOpenSSL'
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el6.noarch.rpm'
 
@@ -36,7 +35,6 @@ class saltstack::params {
         /^7.*$/:
         {
           $api_dependencies=['pyOpenSSL']
-          $api_pip_dependencies=undef
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url='https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm'
 
@@ -48,7 +46,6 @@ class saltstack::params {
     'Debian':
     {
       $api_dependencies=undef
-      $api_pip_dependencies=undef
       $windows_dependencies=[ 'python-impacket', 'python-winrm' ]
 
       case $::operatingsystem

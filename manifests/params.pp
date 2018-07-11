@@ -6,8 +6,11 @@ class saltstack::params {
   $master_package_name='salt-master'
   $master_service_name='salt-master'
 
-  $api_service_name='salt-api'
   $api_package_name='salt-api'
+  $api_service_name='salt-api'
+
+  $syndic_package_name='salt-syndic'
+  $syndic_service_name='salt-syndic'
 
   $cloud_package_name='salt-cloud'
 

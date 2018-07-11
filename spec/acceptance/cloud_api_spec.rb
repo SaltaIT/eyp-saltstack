@@ -37,6 +37,7 @@ describe 'saltstack class' do
     describe file('/etc/salt/master') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
+      its(:content) { should match 'hash_type: sha256' }
     end
 
     describe file('/etc/salt/cloud') do
@@ -52,6 +53,7 @@ describe 'saltstack class' do
     describe file('/etc/salt/minion') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
+      its(:content) { should match 'hash_type: sha256' }
     end
 
   end

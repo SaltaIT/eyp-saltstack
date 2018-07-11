@@ -27,3 +27,8 @@ keep_jobs: <%= @keep_jobs %>
 # memory. This value tunes the maximum size of a message allowed onto the
 # master event bus. The value is expressed in bytes.
 max_event_size: <%= @max_event_size %>
+
+# The hash_type is the hash to use when discovering the hash of a file in
+# the local fileserver. The default is md5, but sha1, sha224, sha256, sha384
+# and sha512 are also supported.
+hash_type: <%= @hash_type %>

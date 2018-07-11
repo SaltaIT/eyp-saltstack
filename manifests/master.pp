@@ -12,6 +12,7 @@ class saltstack::master (
                           $ret_port              = '4506',
                           $keep_jobs             = '170',
                           $max_event_size        = '10485760',
+                          $hash_type             = 'sha256',
                         ) inherits saltstack::params{
 
   class { '::saltstack::master::install': } ->

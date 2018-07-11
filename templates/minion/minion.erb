@@ -12,3 +12,5 @@ random_master: <%= scope.lookupvar('saltstack::minion::random_master') %>
 master: <%= scope.lookupvar('saltstack::minion::master') %>
 <%- end -%>
 master_port: <%= scope.lookupvar('saltstack::minion::master_port') %>
+
+hash_type: <%= @hash_type %>

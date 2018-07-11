@@ -11,6 +11,7 @@ class saltstack::minion (
                           $service_ensure        = 'running',
                           $service_enable        = true,
                           $minion_id             = $::fqdn,
+                          $hash_type             = 'sha256',
                         ) inherits saltstack::params{
 
   # master_type Can be str, failover, func or disable.

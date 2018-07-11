@@ -33,11 +33,21 @@ describe 'saltstack class' do
     describe file('/etc/salt/master') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
+      its(:content) { should match 'hash_type: sha256' }
+      its(:content) { should match 'file_roots:' }
+      its(:content) { should match '- /srv/salt-data/base' }
+      its(:content) { should match 'pillar_roots:' }
+      its(:content) { should match '- /srv/salt-data/pillar' }
+      its(:content) { should match 'interface: 0.0.0.0' }
+      its(:content) { should match 'publish_port: 4505' }
+      its(:content) { should match 'keep_jobs: 170' }
+      its(:content) { should match 'max_event_size: 10485760' }
     end
 
     describe file('/etc/salt/minion') do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
+      its(:content) { should match 'hash_type: sha256' }
     end
 
   end

@@ -24,6 +24,7 @@ class saltstack::api(
                       $app_path                 = undef,
                       $root_prefix              = '/',
                       $generate_selfsigned_cert = true,
+                      $rest_timeout             = '7200',
                     ) inherits saltstack::params {
 
   case $::osfamily

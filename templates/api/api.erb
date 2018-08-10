@@ -80,3 +80,6 @@ rest_cherrypy:
   <%- if defined?(@root_prefix) -%>
   root_prefix: <%= @root_prefix %>
   <%- end -%>
+  <%- if defined?(@rest_timeout) -%>
+  rest_timeout: <%= @rest_timeout %>
+  <%- end -%>

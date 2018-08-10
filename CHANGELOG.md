@@ -3,6 +3,7 @@
 ## 0.1.6
 
 * bugfix saltcloud log_datefmt
+* added **saltstack::api::rest_timeout** (default: 7200)
 
 ## 0.1.5
 

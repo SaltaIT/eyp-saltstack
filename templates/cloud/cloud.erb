@@ -45,7 +45,7 @@ log_level_logfile: <%= @log_level_logfile %>
 #
 #	http://docs.python.org/library/time.html#time.strftime
 #
-log_datefmt: <%= @log_datefmt %>
+log_datefmt: '<%= @log_datefmt %>'
 <%- end -%>
 <%- if defined?(@log_fmt_logfile) -%>
 # The format of the console logging messages. Allowed formatting options can

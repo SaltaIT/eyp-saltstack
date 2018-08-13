@@ -20,4 +20,5 @@ class { 'saltstack::syndic': }
 
 
 saltstack::master::key { $::fqdn:
+  status => 'accepted'
 }

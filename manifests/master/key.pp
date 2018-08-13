@@ -15,7 +15,7 @@ define saltstack::master::key (
     {
       case $current_status
       {
-        'minions': {}
+        /^minions$/: {}
         /^minions_/:
         {
           exec { "salt-key for ${hostname} from ${current_status} to ${status}":
@@ -30,14 +30,14 @@ define saltstack::master::key (
     {
       case $current_status
       {
-        'minions_denied', 'minions', 'minions_pre':
+        /^minions_denied$/, /^minions$/, /^minions_pre$/:
         {
           exec { "salt-key for ${hostname} from ${current_status} to ${status}":
             command => "salt-key -r ${hostname} --include-accepted --include-denied -y",
             path    => '/usr/sbin:/usr/bin:/sbin:/bin',
           }
         }
-        'minions_rejected': { }
+        /^minions_rejected$/: { }
         default: { fail("ERROR: current status set as '${current_status}' - desired state: ${status}")}
       }
     }

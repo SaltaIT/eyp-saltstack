@@ -17,3 +17,7 @@ class { 'saltstack::cloud': }
 class { 'saltstack::api': }
 
 class { 'saltstack::syndic': }
+
+
+saltstack::master::key { $::fqdn:
+}

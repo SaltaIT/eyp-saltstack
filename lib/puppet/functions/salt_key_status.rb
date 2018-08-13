@@ -1,7 +1,4 @@
-Puppet::Functions.create_function(:salt_key_status, :type => :rvalue, :doc => <<-EOS
-Get salt key current status
-EOS
-) do |args|
+Puppet::Functions.create_function(:salt_key_status) do |args|
   raise(Puppet::ParseError, "salt_key_status() wrong number of arguments. #{args.size} vs 1)") if args.size != 1
 
   arg = args[0]

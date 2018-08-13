@@ -1,4 +1,4 @@
-Puppet::Parser::Functions::newfunction(:salt_key_status, :type => :rvalue, :doc => <<-EOS
+Puppet::Functions.create_function(:salt_key_status, :type => :rvalue, :doc => <<-EOS
 Get salt key current status
 EOS
 ) do |args|

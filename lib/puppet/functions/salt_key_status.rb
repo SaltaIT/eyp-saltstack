@@ -12,7 +12,7 @@ Puppet::Functions.create_function(:salt_key_status) do |args|
     command = command.join ' '
 
     output = Puppet::Util::Execution.execute(command, {
-      :uid                => resource[:atom_user],
+      :uid                => 'root',
       :gid                => 'root',
       :failonfail         => false,
       :combine            => true,

@@ -1,4 +1,9 @@
     <%= @user %>:
     <%- @match.each do |val| -%>
+      <%- if val.start_with?('@') -%>
+      - '<%= val %>'
+      <%- else -%>
       - <%= val %>
+      <%- end -%>
+
     <%- end -%>

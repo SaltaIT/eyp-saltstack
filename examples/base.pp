@@ -23,5 +23,5 @@ saltstack::master::key { $::fqdn:
 }
 
 saltstack::master::acl { 'saltuser':
-  match => [ '.*', '\'@runner\'' ],
+  match => [ '.*', '@runner' ],
 }

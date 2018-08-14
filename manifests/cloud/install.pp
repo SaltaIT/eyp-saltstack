@@ -10,6 +10,15 @@ class saltstack::cloud::install inherits saltstack::cloud {
     }
   }
 
+  if($saltstack::cloud::install_vsphere_dependencies)
+  {
+    include ::python
+
+    pythonpip { 'pyvmomi':
+      ensure => 'present',
+    }
+  }
+
   if($saltstack::cloud::install_windows_dependencies)
   {
     if($saltstack::params::windows_dependencies!=undef)

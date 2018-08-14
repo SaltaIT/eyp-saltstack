@@ -6,6 +6,7 @@
 * added **saltstack::api::rest_timeout** (default: 7200)
 * added keys management
 * acl management for salt-master via eAuth
+* **salt::cloud**: flag for vSphere dependencies
 
 ## 0.1.5
 

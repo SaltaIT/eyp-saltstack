@@ -11,6 +11,7 @@ class saltstack::cloud(
                         $log_granular_levels          = undef,
                         $delete_sshkeys               = false,
                         $install_windows_dependencies = true,
+                        $install_vsphere_dependencies = true,
                       ) inherits saltstack::params {
 
   case $::osfamily

@@ -2,11 +2,14 @@
 
 ## 0.1.6
 
-* bugfix saltcloud log_datefmt
-* added **saltstack::api::rest_timeout** (default: 7200)
-* added keys management
-* acl management for salt-master via eAuth
-* **salt::cloud**: flag for vSphere dependencies
+* **salt::cloud**:
+  - bugfix log_datefmt
+  - flag for vSphere dependencies
+* **salt::api**:
+  - added **saltstack::api::rest_timeout** (default: 7200)
+* **salt::master**:
+  - added keys management
+  - acl management for salt-master via eAuth
 
 ## 0.1.5
 

@@ -1,4 +1,6 @@
-class saltstack::repo($srcdir = '/usr/local/src') inherits saltstack::params {
+class saltstack::repo (
+                        $srcdir = '/usr/local/src',
+                      ) inherits saltstack::params {
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',

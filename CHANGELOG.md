@@ -5,6 +5,7 @@
 * bugfix saltcloud log_datefmt
 * added **saltstack::api::rest_timeout** (default: 7200)
 * added keys management
+* acl management for salt-master via eAuth
 
 ## 0.1.5
 

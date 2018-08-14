@@ -4,7 +4,7 @@
 
 * **salt::cloud**:
   - bugfix log_datefmt
-  - flag for vSphere dependencies
+  - flag to manage vSphere dependencies (true by default)
 * **salt::api**:
   - added **saltstack::api::rest_timeout** (default: 7200)
 * **salt::master**:

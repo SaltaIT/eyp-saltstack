@@ -13,6 +13,8 @@ class saltstack::master (
                           $keep_jobs             = '170',
                           $max_event_size        = '10485760',
                           $hash_type             = 'sha256',
+                          $masted_recurse        = true,
+                          $masted_purge          = true,
                         ) inherits saltstack::params{
 
   class { '::saltstack::master::install': } ->

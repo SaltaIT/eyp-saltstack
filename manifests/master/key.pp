@@ -7,6 +7,8 @@ define saltstack::master::key (
                                 $hostname = $name,
                                 $status   = 'accepted',
                               ) {
+  include ::saltstack::master
+  
   $current_status = salt_key_status($hostname)
 
   case $status

@@ -16,6 +16,7 @@ class saltstack::api::config inherits saltstack::api {
     group   => 'root',
     mode    => '0664',
     content => template("${module_name}/api/api.erb"),
+    require => File['/etc/salt/master.d'],
   }
 
 }

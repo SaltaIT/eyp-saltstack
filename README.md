@@ -17,17 +17,19 @@
 
 ## Overview
 
-saltstack configuration management
+saltstack - minion, master, api, cloud, syndic and ssh setup and configuration
 
 ## Module Description
 
-If applicable, this section should have a brief description of the technology
-the module integrates with and what that integration enables. This section
-should answer the questions: "What does this module *do*?" and "Why would I use
-it?"
+This module installs saltstack components:
+* minion
+* master
+* api
+* cloud
+* syndic
+* ssh
 
-If your module has a range of functionality (installation, configuration,
-management, etc.) this is the time to mention it.
+Using a yum/apt repo as appropriate
 
 ## Setup
 
@@ -44,6 +46,8 @@ This module requires pluginsync enabled for puppet <=3.8
 
 ### Beginning with saltstack
 
+A single node configuration example with ACLs:
+
 ```puppet
 class { 'saltstack::minion':
   master => '127.0.0.1'
@@ -59,18 +63,28 @@ saltstack::master::pillar { 'base':
   files => [ '/srv/salt-data/pillar' ],
 }
 
-class { 'saltstack::ssh': }
-
 class { 'saltstack::cloud': }
 
 class { 'saltstack::api': }
 
 class { 'saltstack::syndic': }
+
+saltstack::master::key { $::fqdn:
+  status => 'accepted'
+}
+
+saltstack::master::acl { 'saltuser':
+  match => [ '.*', '@runner' ],
+}
+
+saltstack::master::acl { 'saltuser2':
+  match => [ '.*', '@runner' ],
+}
 ```
 
 ## Usage
 
-salt minion:
+Installing a salt minion:
 
 ```puppet
 class { 'saltstack::minion':
@@ -78,7 +92,7 @@ class { 'saltstack::minion':
 }
 ```
 
-salt master:
+Installing a salt master:
 
 ```puppet
 class { 'saltstack::master': }
@@ -86,7 +100,109 @@ class { 'saltstack::master': }
 
 ## Reference
 
-TODO
+### saltstack
+
+Placeholder, not needed
+
+### saltstack::repo
+
+saltstack repo installation
+
+* **srcdir**: Where to store temporal files (default: /usr/local/src)
+
+### saltstack::minion
+
+* **master**:  'saltmaster',
+* **master_type**:           = 'failover',
+* **master_failback**:       = false,
+* **random_master**:         = false,
+* **master_port**:           = '4506',
+* **manage_package**:        = true,
+* **package_ensure**:        = 'installed',
+* **manage_service**:        = true,
+* **manage_docker_service**: = true,
+* **service_ensure**:        = 'running',
+* **service_enable**:        = true,
+* **minion_id**:             = $::fqdn,
+* **hash_type**:             = 'sha256',
+
+## saltstack::master
+
+* **manage_package**:        = true,
+* **package_ensure**:        = 'installed',
+* **manage_service**:        = true,
+* **manage_docker_service**: = true,
+* **service_ensure**:        = 'running',
+* **service_enable**:        = true,
+* **interface**:             = '0.0.0.0',
+* **ipv6**:                  = false,
+* **user**:                  = 'root',
+* **publish_port**:          = '4505',
+* **ret_port**:              = '4506',
+* **keep_jobs**:             = '170',
+* **max_event_size**:        = '10485760',
+* **hash_type**:             = 'sha256',
+* **masted_recurse**:        = true,
+* **masted_purge**:          = true,
+
+## saltstack::api
+
+* **manage_package**:           = true,
+* **package_ensure**:           = 'installed',
+* **manage_service**:           = true,
+* **manage_docker_service**:    = true,
+* **service_ensure**:           = 'running',
+* **service_enable**:           = true,
+* **port**:                     = '8000',
+* **host**:                     = undef,
+* **debug**:                    = false,
+* **ssl_crt**:                  = undef,
+* **ssl_key**:                  = undef,
+* **disable_ssl**:              = undef,
+* **webhook_disable_auth**:     = false,
+* **webhook_url**:              = undef,
+* **thread_pool**:              = '100',
+* **socket_queue_size**:        = '30',
+* **expire_responses**:         = false,
+* **max_request_body_size**:    = '1048576',
+* **collect_stats**:            = false,
+* **static**:                   = undef,
+* **static_path**:              = undef,
+* **app**:                      = undef,
+* **app_path**:                 = undef,
+* **root_prefix**:              = '/',
+* **generate_selfsigned_cert**: = true,
+* **rest_timeout**:             = '7200',
+
+## saltstack::cloud
+
+* **manage_package**:               = true,
+* **package_ensure**:               = 'installed',
+* **keysize**:                      = '2048',
+* **script**:                       = undef,
+* **log_file**:                     = '/var/log/salt/cloud',
+* **log_level**:                    = 'info',
+* **log_level_logfile**:            = 'info',
+* **log_datefmt**:                  = '%Y-%m-%d %H:%M:%S',
+* **log_fmt_logfile**:              = undef,
+* **log_granular_levels**:          = undef,
+* **delete_sshkeys**:               = false,
+* **install_windows_dependencies**: = true,
+* **install_vsphere_dependencies**: = true,
+
+## saltstack::ssh
+
+* **manage_package**:        = true,
+* **package_ensure**:        = 'installed',
+
+## saltstack::syndic
+
+* **manage_package**:           = true,
+* **package_ensure**:           = 'installed',
+* **manage_service**:           = true,
+* **manage_docker_service**:    = true,
+* **service_ensure**:           = 'running',
+* **service_enable**:           = true,
 
 ## Limitations
 

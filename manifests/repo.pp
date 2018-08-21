@@ -1,5 +1,6 @@
 class saltstack::repo (
                         $srcdir = '/usr/local/src',
+                        $version = 'latest',
                       ) inherits saltstack::params {
 
   Exec {
@@ -23,7 +24,7 @@ class saltstack::repo (
       }
 
       download { 'wget saltstack repo':
-        url     => $saltstack::params::saltstack_repo_url,
+        url     => $saltstack::params::saltstack_repo_url[$version],
         creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
         require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
       }
@@ -39,12 +40,12 @@ class saltstack::repo (
     {
       apt::key { 'SALTSTACK-GPG-KEY':
         key        => $saltstack::params::saltstack_repo_url_key,
-        key_source => $saltstack::params::saltstack_repo_url_key_source,
+        key_source => $saltstack::params::saltstack_repo_url_key_source[$version],
       }
 
       # deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
       apt::source { 'saltstack':
-        location => $saltstack::params::saltstack_repo_url,
+        location => $saltstack::params::saltstack_repo_url[$version],
         release  => $::lsbdistcodename,
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],

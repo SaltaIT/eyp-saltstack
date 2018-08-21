@@ -109,6 +109,7 @@ Placeholder, not needed
 saltstack repo installation
 
 * **srcdir**: Where to store temporal files (default: /usr/local/src)
+* **version**: saltstack version to install, does not update to the latest once it is already installed (default: latest)
 
 ### saltstack::minion
 

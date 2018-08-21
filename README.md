@@ -84,7 +84,7 @@ saltstack::master::acl { 'saltuser2':
 
 ## Usage
 
-Installing a salt minion:
+### Installing a salt minion
 
 ```puppet
 class { 'saltstack::minion':
@@ -92,11 +92,20 @@ class { 'saltstack::minion':
 }
 ```
 
-Installing a salt master:
+### Installing a salt master
 
 ```puppet
 class { 'saltstack::master': }
 ```
+
+### Selecting a specific salt version
+
+```puppet
+class { 'saltstack::repo':
+  version => '2017.7',
+}
+```
+
 
 ## Reference
 

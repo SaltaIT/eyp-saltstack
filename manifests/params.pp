@@ -103,14 +103,10 @@ class saltstack::params {
               $saltstack_repo_url_key_source= {
                                                 'latest' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
                                                 '2017.7' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
-                                                '2016.11' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/2016.11/SALTSTACK-GPG-KEY.pub',
-                                                '2016.3' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub',
                                               }
               $saltstack_repo_url = {
                                       'latest' => 'http://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest',
                                       '2017.7' => 'http://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7',
-                                      '2016.11' => 'http://repo.saltstack.com/apt/ubuntu/18.04/amd64/2016.11',
-                                      '2016.3' => 'http://repo.saltstack.com/apt/ubuntu/18.04/amd64/2016.3',
                                     }
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }

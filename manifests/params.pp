@@ -45,7 +45,7 @@ class saltstack::params {
           $api_dependencies=['pyOpenSSL']
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url = {
-                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm'
+                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm',
                                   '2017.7' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el7.noarch.rpm',
                                   '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el7.noarch.rpm',
                                   '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el7.noarch.rpm',

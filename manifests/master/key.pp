@@ -45,6 +45,10 @@ define saltstack::master::key (
         default: { fail("ERROR: current status set as '${current_status}' - desired state: ${status}")}
       }
     }
+    '':
+    {
+      # NO-OP
+    }
     default: { fail("Unsupported desired status: ${status}") }
   }
 }

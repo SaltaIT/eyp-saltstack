@@ -27,6 +27,8 @@ define saltstack::master::key (
             path    => '/usr/sbin:/usr/bin:/sbin:/bin',
           }
         }
+        # no-op
+        '': { }
         default: { fail("ERROR: current status set as '${current_status}' - desired state: ${status}")}
       }
     }
@@ -42,12 +44,10 @@ define saltstack::master::key (
           }
         }
         /^minions_rejected$/: { }
+        # no-op
+        '': { }
         default: { fail("ERROR: current status set as '${current_status}' - desired state: ${status}")}
       }
-    }
-    '':
-    {
-      # NO-OP
     }
     default: { fail("Unsupported desired status: ${status}") }
   }

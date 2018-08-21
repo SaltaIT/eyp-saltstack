@@ -7,7 +7,7 @@ class saltstack::repo (
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
 
-  if($saltstack::params::saltstack_repo_url[$version]=undef)
+  if($saltstack::params::saltstack_repo_url[$version]==undef)
   {
     fail("unsupported version: ${version}")
   }

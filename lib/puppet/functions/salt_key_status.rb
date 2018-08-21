@@ -5,7 +5,7 @@ Puppet::Functions.create_function(:salt_key_status) do |args|
 
   def salt_key_status(arg)
     # salt-key -L --out=txt | grep "'centos7.vm'" | cut -f 1 -d:
-    command = ['/usr/bin/salt-key -L --out=txt | grep']
+    command = ['/usr/bin/salt-key -L --out=txt 2>/dev/null | grep']
     command.push("\"'" + arg + "'\"")
     command.push("| cut -f 1 -d:")
 

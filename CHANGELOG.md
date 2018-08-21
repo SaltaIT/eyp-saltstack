@@ -1,12 +1,16 @@
 # CHANGELOG
 
-## 0.1.6
+## 0.1.7
 
 * added version selector via **saltstack::repo**
   - latest (latest available, changes among time)
   - 2017.7
   - 2016.11
   - 2016.3
+
+
+## 0.1.6
+
 * **salt::cloud**:
   - bugfix log_datefmt
   - flag to manage vSphere dependencies (true by default)

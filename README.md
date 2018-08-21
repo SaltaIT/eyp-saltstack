@@ -100,18 +100,29 @@ class { 'saltstack::master': }
 
 ## Reference
 
-### saltstack
+### references
+
+#### saltstack::master::key
+
+**WARNING**: keys are not going to be accepted/rejected in the first run if saltstak is not yet installed
+
+* **hostname**: = $name,
+* **status**:   = 'accepted',
+
+### classes
+
+#### saltstack
 
 Placeholder, not needed
 
-### saltstack::repo
+#### saltstack::repo
 
 saltstack repo installation
 
 * **srcdir**: Where to store temporal files (default: /usr/local/src)
 * **version**: saltstack version to install, does not update to the latest once it is already installed (default: latest)
 
-### saltstack::minion
+#### saltstack::minion
 
 * **master**:  'saltmaster',
 * **master_type**:           = 'failover',
@@ -127,7 +138,7 @@ saltstack repo installation
 * **minion_id**:             = $::fqdn,
 * **hash_type**:             = 'sha256',
 
-## saltstack::master
+#### saltstack::master
 
 * **manage_package**:        = true,
 * **package_ensure**:        = 'installed',
@@ -146,7 +157,7 @@ saltstack repo installation
 * **masted_recurse**:        = true,
 * **masted_purge**:          = true,
 
-## saltstack::api
+#### saltstack::api
 
 * **manage_package**:           = true,
 * **package_ensure**:           = 'installed',
@@ -175,7 +186,7 @@ saltstack repo installation
 * **generate_selfsigned_cert**: = true,
 * **rest_timeout**:             = '7200',
 
-## saltstack::cloud
+#### saltstack::cloud
 
 * **manage_package**:               = true,
 * **package_ensure**:               = 'installed',
@@ -191,12 +202,12 @@ saltstack repo installation
 * **install_windows_dependencies**: = true,
 * **install_vsphere_dependencies**: = true,
 
-## saltstack::ssh
+#### saltstack::ssh
 
 * **manage_package**:        = true,
 * **package_ensure**:        = 'installed',
 
-## saltstack::syndic
+#### saltstack::syndic
 
 * **manage_package**:           = true,
 * **package_ensure**:           = 'installed',

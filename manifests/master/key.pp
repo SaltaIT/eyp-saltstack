@@ -9,6 +9,8 @@ define saltstack::master::key (
                               ) {
   include ::saltstack::master
 
+  Class['::saltstack::master'] -> Saltstack::Master::Key <| |>
+
   $current_status = salt_key_status($hostname)
 
   case $status

@@ -16,7 +16,9 @@ saltstack::master::pillar { 'base':
   files => [ '/srv/salt-data/pillar' ],
 }
 
-class { 'saltstack::cloud': }
+class { 'saltstack::cloud':
+  install_windows_dependencies => false,
+}
 
 class { 'saltstack::api': }
 

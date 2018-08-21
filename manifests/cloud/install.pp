@@ -27,7 +27,6 @@ class saltstack::cloud::install inherits saltstack::cloud {
 
       package { $saltstack::params::windows_dependencies:
         ensure => $saltstack::cloud::package_ensure,
-        before => Package[$saltstack::params::cloud_package_name],
       }
     }
   }

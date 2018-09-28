@@ -61,7 +61,7 @@ class saltstack::repo (
       # https://repo.saltstack.com/index.html#suse
 
       exec { 'zypper addrepo':
-        command => "zypper addrepo ${saltstack::params::saltstack_repo_url[$version]}",
+        command => "zypper addrepo -G ${saltstack::params::saltstack_repo_url[$version]}",
         notify => Exec['zypper refresh'],
       }
 

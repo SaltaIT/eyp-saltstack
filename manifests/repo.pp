@@ -56,6 +56,21 @@ class saltstack::repo (
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
       }
     }
+    'Suse':
+    {
+      # https://repo.saltstack.com/index.html#suse
+
+      exec { 'zypper addrepo':
+        command => "zypper addrepo ${saltstack::params::saltstack_repo_url[$version]}",
+        notify => Exec['zypper refresh'],
+      }
+
+      exec { 'zypper refresh':
+        command => 'zypper refresh',
+        refreshonly => true,
+      }
+
+    }
     default:
     {
       fail('unsupported')

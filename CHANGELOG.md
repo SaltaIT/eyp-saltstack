@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.8
+
+* added SLES 12.3 support
+
 ## 0.1.7
 
 * added version selector via **saltstack::repo**
@@ -7,7 +11,6 @@
   - 2017.7
   - 2016.11
   - 2016.3
-
 
 ## 0.1.6
 

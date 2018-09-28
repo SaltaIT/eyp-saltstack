@@ -116,6 +116,27 @@ class saltstack::params {
         default: { fail('Unsupported Debian flavour!')  }
       }
     }
+    'Suse':
+    {
+      case $::operatingsystem
+      {
+        'SLES':
+        {
+          case $::operatingsystemrelease
+          {
+            '12.3':
+            {
+              $saltstack_repo_url_key_source= undef
+              $saltstack_repo_url = {
+                                      'latest' => 'http://repo.saltstack.com/opensuse/SLE_12_SP3/systemsmanagement:saltstack:products.repo',
+                                    }
+            }
+            default: { fail("Unsupported SLES version! - ${::operatingsystemrelease}")  }
+          }
+        }
+        default: { fail("Unsupported SuSE version! - ${::operatingsystemrelease}")  }
+      }
+    }
     default: { fail('Unsupported OS!')  }
   }
 }

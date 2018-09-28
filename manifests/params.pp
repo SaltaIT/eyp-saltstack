@@ -58,6 +58,10 @@ class saltstack::params {
     }
     'Debian':
     {
+      $package_provider=undef
+      $saltstack_repo_name=undef
+      $saltstack_repo_url_key='C7A3D3EE96D9220BAE9420246DF2C88E747F3421'
+
       $api_dependencies=undef
       $windows_dependencies=[ 'python-impacket', 'python-winrm' ]
 
@@ -65,7 +69,6 @@ class saltstack::params {
       {
         'Ubuntu':
         {
-          $saltstack_repo_url_key='C7A3D3EE96D9220BAE9420246DF2C88E747F3421'
           case $::operatingsystemrelease
           {
             /^14.*$/:
@@ -118,6 +121,10 @@ class saltstack::params {
     }
     'Suse':
     {
+      $package_provider=undef
+      $saltstack_repo_name='systemsmanagement_saltstack_products'
+      $saltstack_repo_url_key=undef
+
       case $::operatingsystem
       {
         'SLES':

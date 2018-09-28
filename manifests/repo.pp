@@ -62,12 +62,12 @@ class saltstack::repo (
 
       exec { 'zypper addrepo':
         command => "zypper addrepo -G ${saltstack::params::saltstack_repo_url[$version]}",
-        onlyif => "zypper lr | grep ${saltstack_repo_name}",
-        notify => Exec['zypper refresh'],
+        unless  => "zypper lr | grep ${saltstack_repo_name}",
+        notify  => Exec['zypper refresh'],
       }
 
       exec { 'zypper refresh':
-        command => 'zypper refresh',
+        command     => 'zypper refresh',
         refreshonly => true,
       }
 

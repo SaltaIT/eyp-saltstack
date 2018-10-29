@@ -131,6 +131,13 @@ class saltstack::params {
         {
           case $::operatingsystemrelease
           {
+            '11.3':
+            {
+              $saltstack_repo_url_key_source= undef
+              $saltstack_repo_url = {
+                                      'latest' => 'http://repo.saltstack.com/opensuse/SLE_11_SP3/systemsmanagement:saltstack:products.repo',
+                                    }
+            }
             '12.3':
             {
               $saltstack_repo_url_key_source= undef

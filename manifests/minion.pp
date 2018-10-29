@@ -10,6 +10,7 @@ class saltstack::minion (
                           $manage_docker_service = true,
                           $service_ensure        = 'running',
                           $service_enable        = true,
+                          $manage_config         = true,
                           $minion_id             = $::fqdn,
                           $hash_type             = 'sha256',
                         ) inherits saltstack::params{

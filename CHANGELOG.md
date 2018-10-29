@@ -3,6 +3,7 @@
 ## 0.1.9
 
 * added SLES 11.3 support
+* added **manage_config** to **saltstack::minion**
 
 ## 0.1.8
 

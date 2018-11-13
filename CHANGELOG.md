@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.10
+
+* reorder minion dependencies
+
 ## 0.1.9
 
 * added SLES 11.3 support

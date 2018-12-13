@@ -49,6 +49,23 @@ define saltstack::master::key (
         default: { fail("ERROR: current status set as '${current_status}' - desired state: ${status}")}
       }
     }
+    'deleted':
+    {
+      case $current_status
+      {
+        '':
+        {
+          # ja esta eliminada
+        }
+        default:
+        {
+          exec { "salt-key for ${hostname} from ${current_status} to ${status}":
+            command => "salt-key -d ${hostname} -y",
+            path    => '/usr/sbin:/usr/bin:/sbin:/bin',
+          }
+        }
+      }
+    }
     default: { fail("Unsupported desired status: ${status}") }
   }
 }

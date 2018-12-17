@@ -3,7 +3,7 @@
 ## 0.1.11
 
 * added deleted state for salt keys
-* added version_minor to set a specific salt version
+* added version_minor to install a specific salt version
 
 ## 0.1.10
 

@@ -67,7 +67,7 @@ class saltstack::repo (
     }
     'Debian':
     {
-      if($version_minor==undef)
+      if($version_minor!=undef)
       {
         fail('version_minor is unsupported on this OS')
       }
@@ -87,7 +87,7 @@ class saltstack::repo (
     }
     'Suse':
     {
-      if($version_minor==undef)
+      if($version_minor!=undef)
       {
         fail('version_minor is unsupported on this OS')
       }

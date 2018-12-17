@@ -19,7 +19,7 @@ class saltstack::repo (
   {
     'redhat':
     {
-      if($version_minor==undef)
+      if($version_minor!=undef)
       {
         # https://docs.saltstack.com/en/latest/topics/installation/rhel.html
         #

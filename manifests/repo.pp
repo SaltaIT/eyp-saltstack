@@ -1,6 +1,7 @@
 class saltstack::repo (
-                        $srcdir = '/usr/local/src',
-                        $version = 'latest',
+                        $srcdir        = '/usr/local/src',
+                        $version       = 'latest',
+                        $version_minor = undef,
                       ) inherits saltstack::params {
 
   Exec {
@@ -18,31 +19,59 @@ class saltstack::repo (
   {
     'redhat':
     {
-      exec { 'which wget eyp-saltstack':
-        command => 'which wget',
-        unless  => 'which wget',
-      }
+      if($version_minor==undef)
+      {
+        # https://docs.saltstack.com/en/latest/topics/installation/rhel.html
+        #
+        # [saltstack-repo]
+        # name=SaltStack repo for Red Hat Enterprise Linux $releasever
+        # baseurl=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest
+        # enabled=1
+        # gpgcheck=1
+        # gpgkey=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
+        #        https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7
 
-      exec { "mkdir p eyp-saltstack ${srcdir}":
-        command => "mkdir -p ${srcdir}",
-        creates => $srcdir,
+        yumrepo { 'saltstack-repo':
+          baseurl => "https://repo.saltstack.com/yum/redhat/$releasever/$basearch/archive/${version}.${version_minor}",
+          descr => "SaltStack repo for Red Hat Enterprise Linux - ${version}.${version_minor}",
+          enabled => '1',
+          gpgcheck => '1',
+          gpgkey => 'https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7',
+        }
       }
+      else
+      {
+        exec { 'which wget eyp-saltstack':
+          command => 'which wget',
+          unless  => 'which wget',
+        }
 
-      download { 'wget saltstack repo':
-        url     => $saltstack::params::saltstack_repo_url[$version],
-        creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
-        require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
-      }
+        exec { "mkdir p eyp-saltstack ${srcdir}":
+          command => "mkdir -p ${srcdir}",
+          creates => $srcdir,
+        }
 
-      package { $saltstack::params::saltstack_repo_name:
-        ensure   => 'installed',
-        provider => $saltstack::params::package_provider,
-        source   => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
-        require  => Download['wget saltstack repo'],
+        download { 'wget saltstack repo':
+          url     => $saltstack::params::saltstack_repo_url[$version],
+          creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
+          require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
+        }
+
+        package { $saltstack::params::saltstack_repo_name:
+          ensure   => 'installed',
+          provider => $saltstack::params::package_provider,
+          source   => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
+          require  => Download['wget saltstack repo'],
+        }
       }
     }
     'Debian':
     {
+      if($version_minor==undef)
+      {
+        fail('version_minor is unsupported on this OS')
+      }
+
       apt::key { 'SALTSTACK-GPG-KEY':
         key        => $saltstack::params::saltstack_repo_url_key,
         key_source => $saltstack::params::saltstack_repo_url_key_source[$version],
@@ -58,6 +87,11 @@ class saltstack::repo (
     }
     'Suse':
     {
+      if($version_minor==undef)
+      {
+        fail('version_minor is unsupported on this OS')
+      }
+
       # https://repo.saltstack.com/index.html#suse
 
       exec { 'zypper addrepo':

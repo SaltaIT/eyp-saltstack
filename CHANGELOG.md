@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.11
+
+* added deleted state for salt keys
+
 ## 0.1.10
 
 * reorder minion dependencies

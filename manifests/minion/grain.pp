@@ -18,6 +18,7 @@ define saltstack::minion::grain (
       target  => '/etc/salt/minion',
       order   => "01b-${order}",
       content => template("${module_name}/minion/grain.erb"),
+      require => Concat::Fragment['salt minion grains base'],
     }
 
 }

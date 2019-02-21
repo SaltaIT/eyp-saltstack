@@ -1,7 +1,7 @@
   <%- if @value.kind_of?(Array) -%>
   <%= @grain_name %>:
     <%- @value.each do |val| -%>
-    -  <% val %>
+    -  <%= val %>
     <%- end -%>
   <%- else -%>
   <%= @grain_name %>: <%= @value %>

@@ -14,7 +14,7 @@ define saltstack::minion::grain (
       }
     }
 
-    concat::fragment{ "salt minion grains $salt minion grain ${grain_name}":
+    concat::fragment{ "salt minion grain ${grain_name}":
       target  => '/etc/salt/minion',
       order   => "01b-${order}",
       content => template("${module_name}/minion/grain.erb"),

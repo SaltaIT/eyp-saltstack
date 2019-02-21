@@ -1,6 +1,6 @@
 {
   "name": "eyp-saltstack",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "author": "eyp",
   "summary": "saltstack - minion, master, api, cloud, syndic and ssh setup and configuration",
   "license": "Apache-2.0",

@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.14
+
+* added static grains for saltstak::minion
+
 ## 0.1.13
 
 * bugfix SaltStack 2018.3

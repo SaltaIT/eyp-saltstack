@@ -8,7 +8,7 @@ class { 'saltstack::minion':
 }
 
 saltstack::minion::grain { 'demo1':
-  value => 'demo text',
+  value => 'demo-text',
 }
 
 saltstack::minion::grain { 'demo2':

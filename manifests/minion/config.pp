@@ -3,10 +3,10 @@ class saltstack::minion::config inherits saltstack::minion {
   if($saltstack::minion::manage_config)
   {
     concat { '/etc/salt/minion':
-      ensure  => 'present',
-      owner   => 'root',
-      group   => 'root',
-      mode    => '0640',
+      ensure => 'present',
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0640',
     }
 
     concat::fragment{ 'salt minion base config':

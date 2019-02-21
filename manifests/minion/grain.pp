@@ -3,7 +3,7 @@ define saltstack::minion::grain (
                                   $value = undef,
                                   $order = '00',
                                 ) {
-    include ::saltstak::minion
+    include ::saltstack::minion
 
     if(!defined(Concat::Fragment['salt minion grains base']))
     {

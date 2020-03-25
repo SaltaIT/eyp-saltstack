@@ -27,6 +27,20 @@ class saltstack::params {
 
       case $::operatingsystemrelease
       {
+        /^5.*$/:
+        {
+          $api_dependencies=undef
+          $saltstack_repo_url_key_source=undef
+          $saltstack_repo_url = {
+                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm',
+                                  '2015.5' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2015.5-1.el5.noarch.rpm',
+                                  '2015.8' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2015.8-3.el5.noarch.rpm',
+                                  '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-1.el5.noarch.rpm',
+                                  '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-1.el5.noarch.rpm',
+                                }
+
+          $windows_dependencies=undef
+        }
         /^6.*$/:
         {
           $api_dependencies=undef

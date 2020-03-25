@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.15
+
+* added support for **CentOS 5**
+
 ## 0.1.14
 
 * added static grains for saltstak::minion

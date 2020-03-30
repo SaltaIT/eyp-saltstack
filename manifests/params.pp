@@ -51,6 +51,7 @@ class saltstack::params {
                                   '2017.7' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el6.noarch.rpm',
                                   '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el6.noarch.rpm',
                                   '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el6.noarch.rpm',
+                                  '2019.2' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el6.noarch.rpm',
                                 }
 
           $windows_dependencies=undef
@@ -65,6 +66,7 @@ class saltstack::params {
                                   '2017.7' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el7.noarch.rpm',
                                   '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el7.noarch.rpm',
                                   '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el7.noarch.rpm',
+                                  '2019.2' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el7.noarch.rpm',
                                 }
 
           $windows_dependencies=[ 'python2-impacket', 'python2-winrm' ]

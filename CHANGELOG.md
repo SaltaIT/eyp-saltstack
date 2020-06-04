@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.18
+
+* bugfix GPG key
+
 ## 0.1.17
 
 * added variable to chose between http and https repos

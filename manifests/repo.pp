@@ -37,7 +37,7 @@ class saltstack::repo (
           descr    => "SaltStack repo for Red Hat Enterprise Linux - ${version}.${version_minor}",
           enabled  => '1',
           gpgcheck => '1',
-          gpgkey   => "${protocol}://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub ${protocol}://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7",
+          gpgkey   => "${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/latest/SALTSTACK-GPG-KEY.pub ${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/latest/base/RPM-GPG-KEY-CentOS-7",
         }
       }
       else

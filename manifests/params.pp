@@ -32,11 +32,11 @@ class saltstack::params {
           $api_dependencies=undef
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url = {
-                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm',
-                                  '2015.5' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2015.5-1.el5.noarch.rpm',
-                                  '2015.8' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2015.8-3.el5.noarch.rpm',
-                                  '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-1.el5.noarch.rpm',
-                                  '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-1.el5.noarch.rpm',
+                                  'latest' => '://repo.saltstack.com/yum/redhat/salt-repo-latest-1.el5.noarch.rpm',
+                                  '2015.5' => '://repo.saltstack.com/yum/redhat/salt-repo-2015.5-1.el5.noarch.rpm',
+                                  '2015.8' => '://repo.saltstack.com/yum/redhat/salt-repo-2015.8-3.el5.noarch.rpm',
+                                  '2016.11' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.11-1.el5.noarch.rpm',
+                                  '2016.3' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.3-1.el5.noarch.rpm',
                                 }
 
           $windows_dependencies=undef
@@ -46,12 +46,12 @@ class saltstack::params {
           $api_dependencies=undef
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url = {
-                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el6.noarch.rpm',
-                                  '2018.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2018.3-1.el6.noarch.rpm',
-                                  '2017.7' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el6.noarch.rpm',
-                                  '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el6.noarch.rpm',
-                                  '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el6.noarch.rpm',
-                                  '2019.2' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el6.noarch.rpm',
+                                  'latest' => '://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el6.noarch.rpm',
+                                  '2018.3' => '://repo.saltstack.com/yum/redhat/salt-repo-2018.3-1.el6.noarch.rpm',
+                                  '2017.7' => '://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el6.noarch.rpm',
+                                  '2016.11' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el6.noarch.rpm',
+                                  '2016.3' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el6.noarch.rpm',
+                                  '2019.2' => '://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el6.noarch.rpm',
                                 }
 
           $windows_dependencies=undef
@@ -61,12 +61,12 @@ class saltstack::params {
           $api_dependencies=['pyOpenSSL']
           $saltstack_repo_url_key_source=undef
           $saltstack_repo_url = {
-                                  'latest' => 'https://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm',
-                                  '2018.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2018.3-1.el7.noarch.rpm',
-                                  '2017.7' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el7.noarch.rpm',
-                                  '2016.11' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el7.noarch.rpm',
-                                  '2016.3' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el7.noarch.rpm',
-                                  '2019.2' => 'https://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el7.noarch.rpm',
+                                  'latest' => '://repo.saltstack.com/yum/redhat/salt-repo-latest-2.el7.noarch.rpm',
+                                  '2018.3' => '://repo.saltstack.com/yum/redhat/salt-repo-2018.3-1.el7.noarch.rpm',
+                                  '2017.7' => '://repo.saltstack.com/yum/redhat/salt-repo-2017.7-1.el7.noarch.rpm',
+                                  '2016.11' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.11-2.el7.noarch.rpm',
+                                  '2016.3' => '://repo.saltstack.com/yum/redhat/salt-repo-2016.3-2.el7.noarch.rpm',
+                                  '2019.2' => '://repo.saltstack.com/yum/redhat/salt-repo-2019.2.el7.noarch.rpm',
                                 }
 
           $windows_dependencies=[ 'python2-impacket', 'python2-winrm' ]
@@ -92,48 +92,48 @@ class saltstack::params {
             /^14.*$/:
             {
               $saltstack_repo_url_key_source= {
-                                                'latest' => 'https://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
-                                                '2018.3' => 'https://repo.saltstack.com/apt/ubuntu/14.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
-                                                '2017.7' => 'https://repo.saltstack.com/apt/ubuntu/14.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
-                                                '2016.11' => 'https://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.11/SALTSTACK-GPG-KEY.pub',
-                                                '2016.3' => 'https://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub',
+                                                'latest' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
+                                                '2018.3' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
+                                                '2017.7' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
+                                                '2016.11' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.11/SALTSTACK-GPG-KEY.pub',
+                                                '2016.3' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub',
                                               }
               $saltstack_repo_url = {
-                                      'latest' => 'http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest',
-                                      '2018.3' => 'http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2018.3',
-                                      '2017.7' => 'http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2017.7',
-                                      '2016.11' => 'http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.11',
-                                      '2016.3' => 'http://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3',
+                                      'latest' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest',
+                                      '2018.3' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2018.3',
+                                      '2017.7' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2017.7',
+                                      '2016.11' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.11',
+                                      '2016.3' => '://repo.saltstack.com/apt/ubuntu/14.04/amd64/2016.3',
                                     }
             }
             /^16.*$/:
             {
               $saltstack_repo_url_key_source= {
-                                                'latest' => 'https://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
-                                                '2018.3' => 'https://repo.saltstack.com/apt/ubuntu/16.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
-                                                '2017.7' => 'https://repo.saltstack.com/apt/ubuntu/16.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
-                                                '2016.11' => 'https://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.11/SALTSTACK-GPG-KEY.pub',
-                                                '2016.3' => 'https://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub',
+                                                'latest' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
+                                                '2018.3' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
+                                                '2017.7' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
+                                                '2016.11' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.11/SALTSTACK-GPG-KEY.pub',
+                                                '2016.3' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.3/SALTSTACK-GPG-KEY.pub',
                                               }
               $saltstack_repo_url = {
-                                      'latest' => 'http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest',
-                                      '2018.3' => 'http://repo.saltstack.com/apt/ubuntu/16.04/amd64/2018.3',
-                                      '2017.7' => 'http://repo.saltstack.com/apt/ubuntu/16.04/amd64/2017.7',
-                                      '2016.11' => 'http://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.11',
-                                      '2016.3' => 'http://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.3',
+                                      'latest' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest',
+                                      '2018.3' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2018.3',
+                                      '2017.7' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2017.7',
+                                      '2016.11' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.11',
+                                      '2016.3' => '://repo.saltstack.com/apt/ubuntu/16.04/amd64/2016.3',
                                     }
             }
             /^18.*$/:
             {
               $saltstack_repo_url_key_source= {
-                                                'latest' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
-                                                '2018.3' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
-                                                '2017.7' => 'https://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
+                                                'latest' => '://repo.saltstack.com/apt/ubuntu/18.04/amd64/latest/SALTSTACK-GPG-KEY.pub',
+                                                '2018.3' => '://repo.saltstack.com/apt/ubuntu/18.04/amd64/2018.3/SALTSTACK-GPG-KEY.pub',
+                                                '2017.7' => '://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7/SALTSTACK-GPG-KEY.pub',
                                               }
               $saltstack_repo_url = {
-                                      'latest' => 'http://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest',
-                                      '2018.3' => 'http://repo.saltstack.com/apt/ubuntu/18.04/amd64/2018.3',
-                                      '2017.7' => 'http://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7',
+                                      'latest' => '://repo.saltstack.com/py3/ubuntu/18.04/amd64/latest',
+                                      '2018.3' => '://repo.saltstack.com/apt/ubuntu/18.04/amd64/2018.3',
+                                      '2017.7' => '://repo.saltstack.com/apt/ubuntu/18.04/amd64/2017.7',
                                     }
             }
             default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
@@ -159,14 +159,14 @@ class saltstack::params {
             {
               $saltstack_repo_url_key_source= undef
               $saltstack_repo_url = {
-                                      'latest' => 'http://repo.saltstack.com/opensuse/SLE_11_SP3/systemsmanagement:saltstack:products.repo',
+                                      'latest' => '://repo.saltstack.com/opensuse/SLE_11_SP3/systemsmanagement:saltstack:products.repo',
                                     }
             }
             '12.3':
             {
               $saltstack_repo_url_key_source= undef
               $saltstack_repo_url = {
-                                      'latest' => 'http://repo.saltstack.com/opensuse/SLE_12_SP3/systemsmanagement:saltstack:products.repo',
+                                      'latest' => '://repo.saltstack.com/opensuse/SLE_12_SP3/systemsmanagement:saltstack:products.repo',
                                     }
             }
             default: { fail("Unsupported SLES version! - ${::operatingsystemrelease}")  }

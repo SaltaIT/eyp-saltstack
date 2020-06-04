@@ -2,6 +2,7 @@ class saltstack::repo (
                         $srcdir        = '/usr/local/src',
                         $version       = 'latest',
                         $version_minor = undef,
+                        $protocol      = 'https',
                       ) inherits saltstack::params {
 
   Exec {
@@ -32,11 +33,11 @@ class saltstack::repo (
         #        https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7
 
         yumrepo { 'saltstack-repo':
-          baseurl  => "https://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/archive/${version}.${version_minor}",
+          baseurl  => "${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/archive/${version}.${version_minor}",
           descr    => "SaltStack repo for Red Hat Enterprise Linux - ${version}.${version_minor}",
           enabled  => '1',
           gpgcheck => '1',
-          gpgkey   => 'https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7',
+          gpgkey   => "${protocol}://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub ${protocol}://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7",
         }
       }
       else
@@ -52,7 +53,7 @@ class saltstack::repo (
         }
 
         download { 'wget saltstack repo':
-          url     => $saltstack::params::saltstack_repo_url[$version],
+          url     => "${protocol}${saltstack::params::saltstack_repo_url[$version]}",
           creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
           require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
         }
@@ -74,12 +75,12 @@ class saltstack::repo (
 
       apt::key { 'SALTSTACK-GPG-KEY':
         key        => $saltstack::params::saltstack_repo_url_key,
-        key_source => $saltstack::params::saltstack_repo_url_key_source[$version],
+        key_source => "${protocol}${saltstack::params::saltstack_repo_url_key_source[$version]}",
       }
 
       # deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
       apt::source { 'saltstack':
-        location => $saltstack::params::saltstack_repo_url[$version],
+        location => "${protocol}${saltstack::params::saltstack_repo_url[$version]}",
         release  => $::lsbdistcodename,
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
@@ -95,7 +96,7 @@ class saltstack::repo (
       # https://repo.saltstack.com/index.html#suse
 
       exec { 'zypper addrepo':
-        command => "zypper addrepo -G ${saltstack::params::saltstack_repo_url[$version]}",
+        command => "zypper addrepo -G ${protocol}${saltstack::params::saltstack_repo_url[$version]}",
         unless  => "zypper lr | grep ${saltstack::params::saltstack_repo_name}",
         notify  => Exec['zypper refresh'],
       }

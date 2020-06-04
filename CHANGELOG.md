@@ -1,5 +1,9 @@
 # CHANGELOG
 
+## 0.1.17
+
+* added variable to chose between http and https repos
+
 ## 0.1.16
 
 * added support for **SaltStack 2019.2** on **CentOS 6** and **CentOS 7**

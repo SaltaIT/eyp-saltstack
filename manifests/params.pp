@@ -25,6 +25,9 @@ class saltstack::params {
       $saltstack_repo_name='salt-repo'
       $saltstack_repo_url_key=undef
 
+      $python2_base_repo = 'yum'
+      $repo_path = undef
+
       case $facts['os']['release']['full']
       {
         /^[56].*$/:
@@ -58,22 +61,49 @@ class saltstack::params {
       $api_dependencies=undef
       $windows_dependencies=[ 'python-impacket', 'python-winrm' ]
 
+      $python2_base_repo = 'apt'
+
       case $facts['os']['name']
       {
         'Ubuntu':
         {
           case $facts['os']['release']['full']
           {
-            /^1[468].*$/:
+            /^14.*$/:
             {
+              $repo_path = 'ubuntu/14.04'
+              $base_repo = 'apt'
+            }
+            /^16.*$/:
+            {
+              $repo_path = 'ubuntu/16.04'
+              $base_repo = 'apt'
+            }
+            /^18.*$/:
+            {
+              $repo_path = 'ubuntu/18.04'
+              $base_repo = 'apt'
             }
             /^20.*$/:
             {
+              $repo_path = 'ubuntu/20.04'
+              $base_repo = 'py3'
             }
             default: { fail("Unsupported Ubuntu version! - ${facts['os']['release']['full']}")  }
           }
         }
-        'Debian': { fail('Unsupported')  }
+        'Debian':
+        {
+          case $facts['os']['release']['major']
+          {
+            10:
+            {
+              $repo_path = 'debian/10'
+              $base_repo = 'py3'
+            }
+            default: { fail("Unsupported Debian version! - ${facts['os']['release']['full']}")  }
+          }
+        }
         default: { fail('Unsupported Debian flavour!')  }
       }
     }

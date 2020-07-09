@@ -1,35 +1,27 @@
 class saltstack::repo (
-                        $srcdir        = '/usr/local/src',
-                        $version       = 'latest',
-                        $version_minor = undef,
-                        $protocol      = 'https',
+                        $srcdir         = '/usr/local/src',
+                        $version        = 'latest',
+                        $version_minor  = undef,
+                        $protocol       = 'https',
+                        $python_version = undef,
                       ) inherits saltstack::params {
 
   Exec {
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
 
-  #TODO:
-  # ubuntu: https://repo.saltstack.com/#ubuntu
-  case $facts['os']['family']
-  {
-    'redhat':
-    {
-      if($version_minor!=undef)
-      {
-        $composite_version = "archive/${version}.${version_minor}"
-      }
-      else
-      {
-        $composite_version = $version
-      }
-      # [saltstack-repo]
-      # name=SaltStack repo for RHEL/CentOS 7
-      # baseurl=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3
-      # enabled=1
-      # gpgcheck=1
-      # gpgkey=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3/SALTSTACK-GPG-KEY.pub
 
+  if($version_minor!=undef)
+  {
+    $composite_version = "archive/${version}.${version_minor}"
+  }
+  else
+  {
+    $composite_version = $version
+  }
+
+  if($python_version==undef)
+  {
       if ($version == 'latest')
       {
         $base_yum_repo = 'py3'
@@ -42,6 +34,36 @@ class saltstack::repo (
       {
         $base_yum_repo = $saltstack::params::base_repo
       }
+  }
+  else
+  {
+    case $python_version
+    {
+      2:
+      {
+        $base_yum_repo = $saltstack::params::python2_base_repo
+      }
+      3:
+      {
+        $base_yum_repo = 'py3'
+      }
+      default:
+      {
+        fail("Unsupported python version; python_version can be either 2 or 3 - not ${python_version}")
+      }
+    }
+  }
+
+  case $facts['os']['family']
+  {
+    'redhat':
+    {
+      # [saltstack-repo]
+      # name=SaltStack repo for RHEL/CentOS 7
+      # baseurl=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3
+      # enabled=1
+      # gpgcheck=1
+      # gpgkey=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3/SALTSTACK-GPG-KEY.pub
 
       yumrepo { 'saltstack-repo':
         baseurl  => "${protocol}://repo.saltstack.com/${base_yum_repo}/redhat/\$releasever/\$basearch/${composite_version}",
@@ -65,7 +87,7 @@ class saltstack::repo (
 
       apt::key { 'SALTSTACK-GPG-KEY':
         key        => $saltstack::params::saltstack_repo_url_key,
-        key_source => "${protocol}${saltstack::params::saltstack_repo_url_key_source[$version]}",
+        key_source => "${protocol}://repo.saltstack.com/apt/${repo_path}/amd64/3000/SALTSTACK-GPG-KEY.pub",
       }
 
       # deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main

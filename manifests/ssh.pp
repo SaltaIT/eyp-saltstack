@@ -3,7 +3,7 @@ class saltstack::ssh(
                         $package_ensure        = 'installed',
                       ) inherits saltstack::params {
 
-  include ::saltstack::master
+  include saltstack::master
 
   Class['saltstack::master'] ->
   class { 'saltstack::ssh::install': } ->

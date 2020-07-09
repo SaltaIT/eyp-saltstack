@@ -82,12 +82,12 @@ class saltstack::repo (
 
       apt::key { 'SALTSTACK-GPG-KEY':
         key        => 'C7A3D3EE96D9220BAE9420246DF2C88E747F3421',
-        key_source => "${protocol}://repo.saltstack.com/${base_yum_repo}/${repo_path}/amd64/${composite_version}/SALTSTACK-GPG-KEY.pub",
+        key_source => "${protocol}://repo.saltstack.com/${base_yum_repo}/${saltstack::params::repo_path}/amd64/${composite_version}/SALTSTACK-GPG-KEY.pub",
       }
 
       # deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
       apt::source { 'saltstack':
-        location => "${protocol}://repo.saltstack.com/${base_yum_repo}/${repo_path}/amd64/${composite_version}",
+        location => "${protocol}://repo.saltstack.com/${base_yum_repo}/${saltstack::params::repo_path}/amd64/${composite_version}",
         release  => $facts['os']['distro']['codename'],
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],

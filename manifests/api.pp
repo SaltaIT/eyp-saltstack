@@ -31,9 +31,9 @@ class saltstack::api(
   {
     'redhat':
     {
-      case $::operatingsystemrelease
+      case $facts['os']['release']['full']
       {
-        /^6.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
+        /^6.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${facts['os']['release']['full']}") }
         /^7.*$/: { }
         default: { }
       }
@@ -44,9 +44,9 @@ class saltstack::api(
       {
         'Ubuntu':
         {
-          case $::operatingsystemrelease
+          case $facts['os']['release']['full']
           {
-            /^14.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
+            /^14.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${facts['os']['release']['full']}") }
             /^16.*$/: { }
             /^18.*$/: { }
             /^20.*$/: { }

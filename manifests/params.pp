@@ -25,7 +25,7 @@ class saltstack::params {
       $saltstack_repo_name='salt-repo'
       $saltstack_repo_url_key=undef
 
-      case $::operatingsystemrelease
+      case $facts['os']['release']['full']
       {
         /^[56].*$/:
         {
@@ -45,7 +45,7 @@ class saltstack::params {
           $windows_dependencies=[ 'python2-impacket', 'python2-winrm' ]
           $base_repo = 'py3'
         }
-        default: { fail("Unsupported RHEL/CentOS version! - ${::operatingsystemrelease}")  }
+        default: { fail("Unsupported RHEL/CentOS version! - ${facts['os']['release']['full']}")  }
       }
     }
     'Debian':
@@ -62,7 +62,7 @@ class saltstack::params {
       {
         'Ubuntu':
         {
-          case $::operatingsystemrelease
+          case $facts['os']['release']['full']
           {
             /^1[468].*$/:
             {
@@ -70,7 +70,7 @@ class saltstack::params {
             /^20.*$/:
             {
             }
-            default: { fail("Unsupported Ubuntu version! - ${::operatingsystemrelease}")  }
+            default: { fail("Unsupported Ubuntu version! - ${facts['os']['release']['full']}")  }
           }
         }
         'Debian': { fail('Unsupported')  }

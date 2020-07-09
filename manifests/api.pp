@@ -58,7 +58,7 @@ class saltstack::api(
     default: { }
   }
 
-  include ::saltstack::master
+  include saltstack::master
 
   Class['saltstack::master'] ->
   class { 'saltstack::api::install': } ->

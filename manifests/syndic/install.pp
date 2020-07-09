@@ -9,7 +9,7 @@ class saltstack::syndic::install inherits saltstack::syndic {
 
   if($saltstack::syndic::manage_package)
   {
-    include ::saltstack::repo
+    include saltstack::repo
 
     Class['saltstack::repo'] ->
     package { $saltstack::params::syndic_package_name:

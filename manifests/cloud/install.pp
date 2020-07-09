@@ -2,7 +2,7 @@ class saltstack::cloud::install inherits saltstack::cloud {
 
   if($saltstack::cloud::manage_package)
   {
-    include ::saltstack::repo
+    include saltstack::repo
 
     Class['saltstack::repo'] ->
     package { $saltstack::params::cloud_package_name:
@@ -12,7 +12,7 @@ class saltstack::cloud::install inherits saltstack::cloud {
 
   if($saltstack::cloud::install_vsphere_dependencies)
   {
-    include ::python
+    include python
 
     pythonpip { 'pyvmomi':
       ensure => 'present',
@@ -23,7 +23,7 @@ class saltstack::cloud::install inherits saltstack::cloud {
   {
     if($saltstack::params::windows_dependencies!=undef)
     {
-      include ::python
+      include python
 
       package { $saltstack::params::windows_dependencies:
         ensure => $saltstack::cloud::package_ensure,

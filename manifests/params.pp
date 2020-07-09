@@ -53,7 +53,6 @@ class saltstack::params {
     }
     'Debian':
     {
-      $base_repo = undef
       $package_provider=undef
       $saltstack_repo_name=undef
       $saltstack_repo_url_key='C7A3D3EE96D9220BAE9420246DF2C88E747F3421'

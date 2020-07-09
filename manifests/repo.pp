@@ -34,7 +34,7 @@ class saltstack::repo (
       {
         $base_yum_repo = 'py3'
       }
-      elsif(0+$version > 3000)
+      elsif versioncmp($version, '3000') > 0
       {
         $base_yum_repo = 'py3'
       }

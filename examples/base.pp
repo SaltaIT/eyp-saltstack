@@ -18,7 +18,7 @@ class { 'saltstack::api': }
 
 class { 'saltstack::syndic': }
 
-saltstack::master::key { $::fqdn:
+saltstack::master::key { $facts['networking']['fqdn']:
   status => 'accepted',
 }
 

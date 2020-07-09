@@ -11,7 +11,7 @@ class saltstack::minion (
                           $service_ensure        = 'running',
                           $service_enable        = true,
                           $manage_config         = true,
-                          $minion_id             = $::fqdn,
+                          $minion_id             = $facts['networking']['fqdn'],
                           $hash_type             = 'sha256',
                         ) inherits saltstack::params{
 

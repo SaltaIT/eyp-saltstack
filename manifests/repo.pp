@@ -9,11 +9,6 @@ class saltstack::repo (
     path => '/usr/sbin:/usr/bin:/sbin:/bin',
   }
 
-  if($saltstack::params::saltstack_repo_url[$version]==undef)
-  {
-    fail("unsupported version: ${version}")
-  }
-
   #TODO:
   # ubuntu: https://repo.saltstack.com/#ubuntu
   case $::osfamily
@@ -22,48 +17,38 @@ class saltstack::repo (
     {
       if($version_minor!=undef)
       {
-        # https://docs.saltstack.com/en/latest/topics/installation/rhel.html
-        #
-        # [saltstack-repo]
-        # name=SaltStack repo for Red Hat Enterprise Linux $releasever
-        # baseurl=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest
-        # enabled=1
-        # gpgcheck=1
-        # gpgkey=https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/SALTSTACK-GPG-KEY.pub
-        #        https://repo.saltstack.com/yum/redhat/$releasever/$basearch/latest/base/RPM-GPG-KEY-CentOS-7
-
-        yumrepo { 'saltstack-repo':
-          baseurl  => "${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/archive/${version}.${version_minor}",
-          descr    => "SaltStack repo for Red Hat Enterprise Linux - ${version}.${version_minor}",
-          enabled  => '1',
-          gpgcheck => '1',
-          gpgkey   => "${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/latest/SALTSTACK-GPG-KEY.pub ${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/latest/base/RPM-GPG-KEY-CentOS-7",
-        }
+        $composite_version = "archive/${version}.${version_minor}"
       }
       else
       {
-        exec { 'which wget eyp-saltstack':
-          command => 'which wget',
-          unless  => 'which wget',
-        }
+        $composite_version = $version
+      }
+      # [saltstack-repo]
+      # name=SaltStack repo for RHEL/CentOS 7
+      # baseurl=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3
+      # enabled=1
+      # gpgcheck=1
+      # gpgkey=https://repo.saltstack.com/yum/redhat/7/$basearch/archive/3000.3/SALTSTACK-GPG-KEY.pub
 
-        exec { "mkdir p eyp-saltstack ${srcdir}":
-          command => "mkdir -p ${srcdir}",
-          creates => $srcdir,
-        }
+      if ($version == 'latest')
+      {
+        $base_yum_repo = 'py3'
+      }
+      elsif($version > 3000)
+      {
+        $base_yum_repo = 'py3'
+      }
+      else
+      {
+        $base_yum_repo = $saltstack::params::base_repo
+      }
 
-        download { 'wget saltstack repo':
-          url     => "${protocol}${saltstack::params::saltstack_repo_url[$version]}",
-          creates => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
-          require => Exec[ "mkdir p eyp-saltstack ${srcdir}", 'which wget eyp-saltstack' ],
-        }
-
-        package { $saltstack::params::saltstack_repo_name:
-          ensure   => 'installed',
-          provider => $saltstack::params::package_provider,
-          source   => "${srcdir}/saltstack_repo.${saltstack::params::package_provider}",
-          require  => Download['wget saltstack repo'],
-        }
+      yumrepo { 'saltstack-repo':
+        baseurl  => "${protocol}://repo.saltstack.com/${base_yum_repo}/redhat/\$releasever/\$basearch/${composite_version}",
+        descr    => "SaltStack repo - ${version} ${version_minor}",
+        enabled  => '1',
+        gpgcheck => '1',
+        gpgkey   => "${protocol}://repo.saltstack.com/yum/redhat/\$releasever/\$basearch/${composite_version}/SALTSTACK-GPG-KEY.pub",
       }
     }
     'Debian':
@@ -85,27 +70,6 @@ class saltstack::repo (
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
       }
-    }
-    'Suse':
-    {
-      if($version_minor!=undef)
-      {
-        fail('version_minor is unsupported on this OS')
-      }
-
-      # https://repo.saltstack.com/index.html#suse
-
-      exec { 'zypper addrepo':
-        command => "zypper addrepo -G ${protocol}${saltstack::params::saltstack_repo_url[$version]}",
-        unless  => "zypper lr | grep ${saltstack::params::saltstack_repo_name}",
-        notify  => Exec['zypper refresh'],
-      }
-
-      exec { 'zypper refresh':
-        command     => 'zypper refresh',
-        refreshonly => true,
-      }
-
     }
     default:
     {

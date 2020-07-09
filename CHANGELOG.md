@@ -1,5 +1,13 @@
 # CHANGELOG
 
+## 0.2.0
+
+* INCOMPATIBLE CHANGE:
+  - dropped SuSE support
+* Added **Ubuntu 20.04** support
+* Added **CentOS 8** support
+
+
 ## 0.1.18
 
 * bugfix GPG key

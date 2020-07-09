@@ -1,6 +1,6 @@
 {
   "name": "eyp-saltstack",
-  "version": "0.1.18",
+  "version": "0.2.0",
   "author": "eyp",
   "summary": "saltstack - minion, master, api, cloud, syndic and ssh setup and configuration",
   "license": "Apache-2.0",
@@ -17,31 +17,27 @@
   "operatingsystem_support": [
     {
       "operatingsystem": "RedHat",
-      "operatingsystemrelease": [ "5", "6", "7" ]
+      "operatingsystemrelease": [ "5", "6", "7", "8" ]
     },
     {
       "operatingsystem": "CentOS",
-      "operatingsystemrelease": [ "5", "6", "7" ]
+      "operatingsystemrelease": [ "5", "6", "7", "8" ]
     },
     {
       "operatingsystem": "Scientific",
-      "operatingsystemrelease": [ "5", "6", "7" ]
+      "operatingsystemrelease": [ "5", "6", "7", "8" ]
     },
     {
       "operatingsystem": "OEL",
-      "operatingsystemrelease": [ "5", "6", "7" ]
+      "operatingsystemrelease": [ "5", "6", "7", "8" ]
     },
     {
       "operatingsystem": "OracleLinux",
-      "operatingsystemrelease": [ "5", "6", "7" ]
+      "operatingsystemrelease": [ "5", "6", "7", "8" ]
     },
     {
       "operatingsystem": "Ubuntu",
-      "operatingsystemrelease": [ "14.04", "16.04", "18.04" ]
-    },
-    {
-      "operatingsystem": "SLES",
-      "operatingsystemrelease": [ "11.3", "12.3" ]
+      "operatingsystemrelease": [ "14.04", "16.04", "18.04", "20.04" ]
     }
   ],
   "requirements": [

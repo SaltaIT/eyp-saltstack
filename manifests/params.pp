@@ -95,6 +95,16 @@ class saltstack::params {
         {
           case $facts['os']['release']['major']
           {
+            8:
+            {
+              $repo_path = 'debian/8'
+              $base_repo = 'apt'
+            }
+            9:
+            {
+              $repo_path = 'debian/9'
+              $base_repo = 'apt'
+            }
             10:
             {
               $repo_path = 'debian/10'

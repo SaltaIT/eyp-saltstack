@@ -47,8 +47,8 @@ class saltstack::cloud(
 
   include ::saltstack::master
 
-  Class['::saltstack::master'] ->
-  class { '::saltstack::cloud::install': } ->
-  class { '::saltstack::cloud::config': } ->
-  Class['::saltstack::cloud']
+  Class['saltstack::master'] ->
+  class { 'saltstack::cloud::install': } ->
+  class { 'saltstack::cloud::config': } ->
+  Class['saltstack::cloud']
 }

@@ -4,7 +4,7 @@ class saltstack::cloud::install inherits saltstack::cloud {
   {
     include ::saltstack::repo
 
-    Class['::saltstack::repo'] ->
+    Class['saltstack::repo'] ->
     package { $saltstack::params::cloud_package_name:
       ensure => $saltstack::cloud::package_ensure,
     }

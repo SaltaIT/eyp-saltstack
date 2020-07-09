@@ -3,7 +3,7 @@ define saltstack::master::acl (
                                 $backend     = 'pam',
                                 $match       = '.*',
                               ) {
-  include ::saltstack::master
+  include saltstack::master
 
   if(!defined(Concat['/etc/salt/master.d/external_auth.conf']))
   {

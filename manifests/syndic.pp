@@ -8,7 +8,7 @@ class saltstack::syndic(
                     ) inherits saltstack::params {
 
 
-  class { '::saltstack::syndic::install': } ->
-  class { '::saltstack::syndic::service': } ->
-  Class['::saltstack::syndic']
+  class { 'saltstack::syndic::install': } ->
+  class { 'saltstack::syndic::service': } ->
+  Class['saltstack::syndic']
 }

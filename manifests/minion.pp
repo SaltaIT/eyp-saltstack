@@ -17,9 +17,9 @@ class saltstack::minion (
 
   # master_type Can be str, failover, func or disable.
 
-  class { '::saltstack::minion::install': } ->
-  class { '::saltstack::minion::config': } ~>
-  class { '::saltstack::minion::service': } ->
-  Class['::saltstack::minion']
+  class { 'saltstack::minion::install': } ->
+  class { 'saltstack::minion::config': } ~>
+  class { 'saltstack::minion::service': } ->
+  Class['saltstack::minion']
 
 }

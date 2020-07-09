@@ -11,7 +11,7 @@ class saltstack::api::install inherits saltstack::api {
   {
     include ::saltstack::repo
 
-    Class['::saltstack::repo'] ->
+    Class['saltstack::repo'] ->
     package { $saltstack::params::api_package_name:
       ensure => $saltstack::api::package_ensure,
     }

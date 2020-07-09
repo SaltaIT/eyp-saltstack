@@ -5,8 +5,8 @@ class saltstack::ssh(
 
   include ::saltstack::master
 
-  Class['::saltstack::master'] ->
-  class { '::saltstack::ssh::install': } ->
-  class { '::saltstack::ssh::config': } ->
-  Class['::saltstack::ssh']
+  Class['saltstack::master'] ->
+  class { 'saltstack::ssh::install': } ->
+  class { 'saltstack::ssh::config': } ->
+  Class['saltstack::ssh']
 }

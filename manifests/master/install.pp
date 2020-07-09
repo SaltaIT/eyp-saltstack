@@ -4,7 +4,7 @@ class saltstack::master::install inherits saltstack::master {
   {
     include ::saltstack::repo
 
-    Class['::saltstack::repo'] ->
+    Class['saltstack::repo'] ->
     package { $saltstack::params::master_package_name:
       ensure => $saltstack::master::package_ensure,
     }

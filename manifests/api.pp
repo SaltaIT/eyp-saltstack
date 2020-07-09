@@ -60,9 +60,9 @@ class saltstack::api(
 
   include ::saltstack::master
 
-  Class['::saltstack::master'] ->
-  class { '::saltstack::api::install': } ->
-  class { '::saltstack::api::config': } ~>
-  class { '::saltstack::api::service': } ->
-  Class['::saltstack::api']
+  Class['saltstack::master'] ->
+  class { 'saltstack::api::install': } ->
+  class { 'saltstack::api::config': } ~>
+  class { 'saltstack::api::service': } ->
+  Class['saltstack::api']
 }

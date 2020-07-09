@@ -17,9 +17,9 @@ class saltstack::master (
                           $masted_purge          = true,
                         ) inherits saltstack::params{
 
-  class { '::saltstack::master::install': } ->
-  class { '::saltstack::master::config': } ~>
-  class { '::saltstack::master::service': } ->
-  Class['::saltstack::master']
+  class { 'saltstack::master::install': } ->
+  class { 'saltstack::master::config': } ~>
+  class { 'saltstack::master::service': } ->
+  Class['saltstack::master']
 
 }

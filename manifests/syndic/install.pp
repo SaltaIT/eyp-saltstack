@@ -11,7 +11,7 @@ class saltstack::syndic::install inherits saltstack::syndic {
   {
     include ::saltstack::repo
 
-    Class['::saltstack::repo'] ->
+    Class['saltstack::repo'] ->
     package { $saltstack::params::syndic_package_name:
       ensure => $saltstack::syndic::package_ensure,
     }

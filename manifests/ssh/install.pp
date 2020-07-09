@@ -4,7 +4,7 @@ class saltstack::ssh::install inherits saltstack::ssh {
     {
       include ::saltstack::repo
 
-      Class['::saltstack::repo'] ->
+      Class['saltstack::repo'] ->
       package { $saltstack::params::ssh_package_name:
         ensure => $saltstack::ssh::package_ensure,
       }

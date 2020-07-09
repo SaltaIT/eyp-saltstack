@@ -11,7 +11,7 @@ class saltstack::repo (
 
   #TODO:
   # ubuntu: https://repo.saltstack.com/#ubuntu
-  case $::osfamily
+  case $facts['os']['family']
   {
     'redhat':
     {

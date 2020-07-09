@@ -27,13 +27,13 @@ class saltstack::api(
                       $rest_timeout             = '7200',
                     ) inherits saltstack::params {
 
-  case $::osfamily
+  case $facts['os']['family']
   {
     'redhat':
     {
       case $::operatingsystemrelease
       {
-        /^6.*$/: { fail("api is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+        /^6.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
         /^7.*$/: { }
         default: { }
       }
@@ -46,7 +46,7 @@ class saltstack::api(
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/: { fail("api is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+            /^14.*$/: { fail("api is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
             /^16.*$/: { }
             /^18.*$/: { }
             /^20.*$/: { }

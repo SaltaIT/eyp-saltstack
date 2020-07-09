@@ -17,7 +17,7 @@ class saltstack::params {
   $ssh_package_name = 'salt-ssh'
 
 
-  case $::osfamily
+  case $facts['os']['family']
   {
     'redhat':
     {

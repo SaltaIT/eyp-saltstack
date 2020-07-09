@@ -14,13 +14,13 @@ class saltstack::cloud(
                         $install_vsphere_dependencies = true,
                       ) inherits saltstack::params {
 
-  case $::osfamily
+  case $facts['os']['family']
   {
     'redhat':
     {
       case $::operatingsystemrelease
       {
-        /^6.*$/: { fail("cloud is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+        /^6.*$/: { fail("cloud is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
         /^7.*$/: { }
         default: { }
       }
@@ -33,7 +33,7 @@ class saltstack::cloud(
         {
           case $::operatingsystemrelease
           {
-            /^14.*$/: { fail("cloud is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
+            /^14.*$/: { fail("cloud is not unsupported for this OS - ${facts['os']['family']}/${::operatingsystemrelease}") }
             /^16.*$/: { }
             /^18.*$/: { }
             default: { }

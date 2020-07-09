@@ -40,7 +40,7 @@ class saltstack::api(
     }
     'Debian':
     {
-      case $::operatingsystem
+      case $facts['os']['name']
       {
         'Ubuntu':
         {

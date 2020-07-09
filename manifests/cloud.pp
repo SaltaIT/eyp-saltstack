@@ -27,7 +27,7 @@ class saltstack::cloud(
     }
     'Debian':
     {
-      case $::operatingsystem
+      case $facts['os']['name']
       {
         'Ubuntu':
         {

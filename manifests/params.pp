@@ -58,7 +58,7 @@ class saltstack::params {
       $api_dependencies=undef
       $windows_dependencies=[ 'python-impacket', 'python-winrm' ]
 
-      case $::operatingsystem
+      case $facts['os']['name']
       {
         'Ubuntu':
         {

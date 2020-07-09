@@ -53,6 +53,11 @@ class saltstack::repo (
     }
     'Debian':
     {
+      # Run the following command to import the SaltStack repository key:
+      # wget -O - https://repo.saltstack.com/apt/ubuntu/18.04/amd64/3000/SALTSTACK-GPG-KEY.pub | sudo apt-key add -
+      # Save the following file to /etc/apt/sources.list.d/saltstack.list:
+      # deb http://repo.saltstack.com/apt/ubuntu/18.04/amd64/3000 bionic main
+
       if($version_minor!=undef)
       {
         fail('version_minor is unsupported on this OS')
@@ -66,7 +71,7 @@ class saltstack::repo (
       # deb http://repo.saltstack.com/apt/ubuntu/16.04/amd64/latest xenial main
       apt::source { 'saltstack':
         location => "${protocol}${saltstack::params::saltstack_repo_url[$version]}",
-        release  => $::lsbdistcodename,
+        release  => $facts['os']['distro']['codename'],
         repos    => 'main',
         require  => Apt::Key['SALTSTACK-GPG-KEY'],
       }

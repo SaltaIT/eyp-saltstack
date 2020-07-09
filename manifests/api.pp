@@ -49,6 +49,7 @@ class saltstack::api(
             /^14.*$/: { fail("api is not unsupported for this OS - ${::osfamily}/${::operatingsystemrelease}") }
             /^16.*$/: { }
             /^18.*$/: { }
+            /^20.*$/: { }
             default: { }
           }
         }

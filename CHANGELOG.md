@@ -4,6 +4,7 @@
 
 * INCOMPATIBLE CHANGE:
   - dropped **SuSE** support
+  - dropped support for legacy puppet versions (3.8)
 * Added **Ubuntu 20.04** support
 * Added **CentOS 8** support
 * Added **Debian 8**, **Debian 9** and **Debian 10** support

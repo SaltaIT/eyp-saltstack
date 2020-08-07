@@ -23,7 +23,7 @@ matrix:
     dist: trusty
     bundler_args:
     script: bundle exec rake validate
-    - rvm: 2.5.3
-    bundler_args: --without development release
-    env: BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_setfile=debian8-64 CHECK=beaker
-    services: docker
+  - rvm: 2.5.3
+  bundler_args: --without development release
+  env: BEAKER_PUPPET_COLLECTION=puppet5 BEAKER_setfile=debian8-64 CHECK=beaker
+  services: docker

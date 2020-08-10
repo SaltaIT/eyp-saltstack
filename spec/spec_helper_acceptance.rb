@@ -1,4 +1,6 @@
-require 'spec_helper_acceptance'
+require 'beaker-rspec'
+require 'tmpdir'
+require 'yaml'
 
 install_puppet_agent_on hosts, {}
 

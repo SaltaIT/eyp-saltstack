@@ -22,30 +22,11 @@ describe 'saltstack class' do
         files => [ '/srv/salt-data/pillar' ],
       }
 
-      class { 'saltstack::ssh': }
-
-      class { 'saltstack::cloud': }
-
-      class { 'saltstack::api': }
-
-      class { 'saltstack::syndic': }
-
-
       EOF
 
       # Run it twice and test for idempotency
       expect(apply_manifest(pp).exit_code).to_not eq(1)
       expect(apply_manifest(pp).exit_code).to eq(0)
-    end
-
-    describe file('/etc/salt/master.d/salt-ssh.conf') do
-      it { should be_file }
-      its(:content) { should match 'puppet managed file' }
-    end
-
-    describe file('/etc/salt/roster') do
-      it { should be_file }
-      its(:content) { should match 'puppet managed file' }
     end
 
     describe file('/etc/salt/master') do
@@ -66,32 +47,6 @@ describe 'saltstack class' do
       it { should be_file }
       its(:content) { should match 'puppet managed file' }
       its(:content) { should match 'hash_type: sha256' }
-    end
-
-    describe package('salt-syndic') do
-      it { is_expected.to be_installed }
-    end
-
-    describe service('salt-syndic') do
-      it { should be_enabled }
-      it { is_expected.to be_running }
-    end
-
-    describe package('salt-api') do
-      it { is_expected.to be_installed }
-    end
-
-    describe service('salt-api') do
-      it { should be_enabled }
-      it { is_expected.to be_running }
-    end
-
-    describe package('salt-cloud') do
-      it { is_expected.to be_installed }
-    end
-
-    describe package('salt-ssh') do
-      it { is_expected.to be_installed }
     end
 
     describe service('salt-master') do

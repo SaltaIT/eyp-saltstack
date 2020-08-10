@@ -30,15 +30,6 @@ group :test do
   gem 'coveralls',                                                  :require => false
   gem 'simplecov-console',                                          :require => false
   gem 'parallel_tests',                                             :require => false
-end
-
-group :development do
-  gem 'travis',       :require => false
-  gem 'travis-lint',  :require => false
-  gem 'guard-rake',   :require => false
-end
-
-group :system_tests do
   if beaker_version = ENV['BEAKER_VERSION']
     gem 'beaker', *location_for(beaker_version)
   else
@@ -54,6 +45,12 @@ group :system_tests do
   gem 'beaker-puppet',                      :require => false
   gem 'beaker-puppet_install_helper',       :require => false
   gem 'beaker-module_install_helper',       :require => false
+end
+
+group :development do
+  gem 'travis',       :require => false
+  gem 'travis-lint',  :require => false
+  gem 'guard-rake',   :require => false
 end
 
 group :release do

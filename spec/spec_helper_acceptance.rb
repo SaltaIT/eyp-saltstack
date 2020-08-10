@@ -1,6 +1,8 @@
 require 'beaker-rspec'
 require 'tmpdir'
 require 'yaml'
+require 'simp/beaker_helpers'
+include Simp::BeakerHelpers
 
 hosts.each do |host|
   # Install Puppet

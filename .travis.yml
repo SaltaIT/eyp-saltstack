@@ -28,3 +28,8 @@ matrix:
     dist: trusty
     bundler_args:
     script: bundle exec rake spec
+  - rvm: default
+    env: PUPPET_VERSION="~> 5.5.0" BEAKER_set="centos6-docker"
+    dist: trusty
+    bundler_args:
+    script: sudo service docker restart ; sleep 10 && bundle exec rspec spec/acceptance/*_spec.rb

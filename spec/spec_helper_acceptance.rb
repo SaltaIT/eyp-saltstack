@@ -2,7 +2,10 @@ require 'beaker-rspec'
 require 'tmpdir'
 require 'yaml'
 
-install_puppet_agent_on hosts, {}
+hosts.each do |host|
+  # Install Puppet
+  install_puppet
+end
 
 RSpec.configure do |c|
   module_root = File.expand_path(File.join(File.dirname(__FILE__), '..'))

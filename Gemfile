@@ -45,6 +45,7 @@ group :test do
   gem 'beaker-puppet',                      :require => false
   gem 'beaker-puppet_install_helper',       :require => false
   gem 'beaker-module_install_helper',       :require => false
+  gem 'simp-beaker-helpers'
 end
 
 group :development do
